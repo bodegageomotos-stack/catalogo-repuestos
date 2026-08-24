@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Repuestos</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        header { background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 30; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 12px 16px; display: flex; flex-direction: column; gap: 10px; }
+        
+        @media(min-width: 768px) {
+            .header-content { padding: 16px; flex-direction: row; justify-content: space-between; align-items: center; }
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-icon { background: #2563eb; color: white; font-weight: bold; padding: 8px 12px; border-radius: 8px; font-size: 16px; }
+        @media(min-width: 768px) { .logo-icon { font-size: 18px; } }
+        
+        h1 { font-size: 17px; font-weight: 700; color: #0f172a; }
+        @media(min-width: 768px) { h1 { font-size: 20px; } }
+        
+        #contador-productos { font-size: 11px; color: #64748b; }
+        @media(min-width: 768px) { #contador-productos { font-size: 12px; } }
+
+        .search-box { width: 100%; position: relative; }
+        @media(min-width: 768px) { .search-box { width: 350px; } }
+        .search-box input { width: 100%; padding: 10px 14px 10px 38px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; outline: none; }
+        .search-box input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.2); }
+        .search-icon { position: absolute; left: 12px; top: 12px; width: 18px; height: 18px; color: #94a3b8; }
+
+        .filters-container { border-top: 1px solid #f1f5f9; background: #ffffff; }
+        .filters-scroll { max-width: 1200px; margin: 0 auto; padding: 8px 16px; display: flex; gap: 8px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+        .filters-scroll::-webkit-scrollbar { height: 4px; }
+        .filters-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        .filtro-btn { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; background: #f1f5f9; color: #475569; transition: all 0.2s; flex-shrink: 0; }
+        .filtro-btn.active { background: #2563eb; color: white; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+        main { max-width: 1200px; margin: 0 auto; padding: 16px 10px; flex-grow: 1; width: 100%; }
+        @media(min-width: 768px) { main { padding: 20px 16px; } }
+
+        #loading { display: flex; flex-direction: column; align-items: center; justify-content: py-20; padding: 60px 0; }
+        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #2563eb; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 12px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .grid-productos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        @media(min-width: 640px) { .grid-productos { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
+        @media(min-width: 1024px) { .grid-productos { grid-template-columns: repeat(5, 1fr); gap: 16px; } }
+
+        .card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: all 0.2s; cursor: pointer; }
+        .card:hover { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transform: translateY(-2px); }
+
+        .card-header { background: #0f172a; color: white; padding: 5px 8px; font-size: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        @media(min-width: 768px) { .card-header { padding: 6px 10px; font-size: 11px; } }
+        
+        .card-badge { font-size: 8px; background: #2563eb; padding: 2px 5px; border-radius: 4px; font-weight: normal; }
+        @media(min-width: 768px) { .card-badge { font-size: 9px; } }
+
+        .card-img-container { width: 100%; height: 110px; background: #ffffff; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #f1f5f9; position: relative; }
+        @media(min-width: 768px) { .card-img-container { height: 130px; } }
+        
+        .card-img-container img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+        
+        .no-img { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #94a3b8; font-size: 9px; font-weight: 500; text-transform: uppercase; gap: 3px; }
+        @media(min-width: 768px) { .no-img { font-size: 10px; } }
+        .no-img svg { width: 20px; height: 20px; opacity: 0.4; }
+        @media(min-width: 768px) { .no-img svg { width: 24px; height: 24px; } }
+
+        .card-body { padding: 8px; flex-grow: 1; }
+        @media(min-width: 768px) { .card-body { padding: 10px; } }
+        
+        .card-desc { font-size: 10px; color: #475569; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 27px; }
+        @media(min-width: 768px) { .card-desc { font-size: 11px; height: 31px; } }
+
+        .card-footer { padding: 6px 8px; border-top: 1px solid #f8fafc; display: flex; justify-content: space-between; align-items: center; background: #ffffff; }
+        @media(min-width: 768px) { .card-footer { padding: 8px 10px; } }
+        
+        .price-label { font-size: 8px; color: #94a3b8; text-transform: uppercase; font-weight: 600; }
+        @media(min-width: 768px) { .price-label { font-size: 9px; } }
+        
+        .price-value { font-size: 11px; font-weight: 700; color: #0f172a; }
+        @media(min-width: 768px) { .price-value { font-size: 13px; } }
+
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 16px; backdrop-filter: blur(2px); }
+        .modal-container { background: white; width: 100%; max-width: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
+        .modal-header { background: #0f172a; color: white; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: bold; }
+        .modal-close { background: rgba(255,255,255,0.2); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .modal-img-box { width: 100%; height: 260px; background: #ffffff; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #f1f5f9; padding: 12px; }
+        .modal-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .modal-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+        .modal-desc-title { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 600; }
+        .modal-desc-text { font-size: 13px; color: #334155; line-height: 1.5; }
+        .modal-footer { padding: 12px 16px; border-top: 1px solid #f1f5f9; background: #f8fafc; display: flex; justify-content: space-between; align-items: center; }
+        .modal-price { font-size: 18px; font-weight: 800; color: #2563eb; }
+
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .py-20 { padding: 40px 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <span class="logo-icon">⚙️</span>
+                <div>
+                    <h1>Catálogo de Repuestos</h1>
+                    <p id="contador-productos">Cargando inventario...</p>
+                </div>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="input-buscador" placeholder="Buscar por código o descripción..." oninput="filtrarProductos()">
+                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="filters-container">
+            <div class="filters-scroll" id="contenedor-filtros">
+                <button onclick="seleccionarMarca('TODAS')" class="filtro-btn active" data-marca="TODAS">Todas</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="loading">
+            <div class="spinner"></div>
+            <p style="color: #64748b; font-size: 13px; font-weight: 500;">Sincronizando productos...</p>
+        </div>
+
+        <div id="no-results" class="hidden text-center py-20">
+            <p style="font-size: 16px; font-weight: 600; color: #475569;">No se encontraron productos</p>
+            <p style="font-size: 12px; color: #94a3b8; margin-top: 4px;">Intenta ajustando los términos de búsqueda o cambiando de marca.</p>
+        </div>
+
+        <div id="grid-productos" class="grid-productos"></div>
+    </main>
+
+    <div id="modal-detalle" class="hidden modal-overlay" onclick="cerrarModal()">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span id="modal-codigo"></span>
+                <span id="modal-marca" class="card-badge" style="font-size: 10px;"></span>
+                <button class="modal-close" onclick="cerrarModal()">✕</button>
+            </div>
+            <div class="modal-img-box" id="modal-img-container"></div>
+            <div class="modal-body">
+                <div>
+                    <p class="modal-desc-title">Descripción completa</p>
+                    <p class="modal-desc-text" id="modal-descripcion"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="price-label">Precio</span>
+                <span class="modal-price" id="modal-precio"></span>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: white; border-top: 1px solid #e2e8f0; padding: 12px; text-align: center; font-size: 11px; color: #94a3b8; margin-top: auto;">
+        Catálogo Digital Operativo &bull; Actualizado desde Google Sheets
+    </footer>
+
+    <script>
+        let catalogoGlobal = [];
+        let marcaSeleccionada = 'TODAS';
+        const listaMarcas = ["North Panthr", "Panther", "KCC", "Harkes", "Bajaj", "Thunder", "Koyo", "Pfi", "Otros"];
+
+        // ⚠️ PEGA AQUÍ ABAJO TU URL WEB DE GOOGLE APPS SCRIPT QUE TERMINA EN /exec ⚠️
+        const URL_API = "https://script.google.com/macros/s/AKfycbz3q9-bhwsyxHiKOORF13a-rRf_KCgbcsoycA1BVzGK-OLAPYntbHDbVgonXM9OCigB/exec";
+
+        window.onload = function() {
+            fetch(URL_API)
+                .then(response => response.json())
+                .then(data => {
+                    catalogoGlobal = data;
+                    inicializarFiltros();
+                    renderizarProductos(catalogoGlobal);
+                    document.getElementById('loading').style.display = 'none';
+                })
+                .catch(error => {
+                    document.getElementById('loading').innerHTML = `<p style="color: #ef4444; font-weight: 500;">Error al cargar los datos</p>`;
+                });
+        };
+
+        function inicializarFiltros() {
+            const contenedor = document.getElementById('contenedor-filtros');
+            let html = `<button onclick="seleccionarMarca('TODAS')" class="filtro-btn active" data-marca="TODAS">Todas</button>`;
+            listaMarcas.forEach(m => {
+                html += `<button onclick="seleccionarMarca('${m}')" class="filtro-btn" data-marca="${m}">${m}</button>`;
+            });
+            contenedor.innerHTML = html;
+        }
+
+        function seleccionarMarca(marca) {
+            marcaSeleccionada = marca;
+            document.querySelectorAll('.filtro-btn').forEach(btn => {
+                if(btn.getAttribute('data-marca') === marca) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            filtrarProductos();
+        }
+
+        function filtrarProductos() {
+            const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
+            const palabrasBusqueda = textoBusqueda.split(/\s+/);
+
+            const filtrados = catalogoGlobal.filter(item => {
+                const coincideMarca = (marcaSeleccionada === 'TODAS' || item.marca === marcaSeleccionada);
+                if (!coincideMarca) return false;
+                if (textoBusqueda === "") return true;
+
+                const textoObjetivo = (item.codigo + " " + item.descripcion).toLowerCase();
+                return palabrasBusqueda.every(palabra => textoObjetivo.includes(palabra));
+            });
+
+            renderizarProductos(filtrados);
+        }
+
+        function renderizarProductos(productos) {
+            const grid = document.getElementById('grid-productos');
+            const noResults = document.getElementById('no-results');
+            document.getElementById('contador-productos').innerText = `${productos.length} productos disponibles`;
+
+            if (productos.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            let html = '';
+
+            productos.forEach((p, index) => {
+                let imagenHtml = p.imagen ? `<img src="${p.imagen}" alt="${p.codigo}" loading="lazy">` : `
+                    <div class="no-img">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>Sin Imagen</span>
+                    </div>`;
+
+                html += `
+                    <div class="card" onclick="abrirModal(${index})">
+                        <div>
+                            <div class="card-header">
+                                <span>${p.codigo}</span>
+                                <span class="card-badge">${p.marca}</span>
+                            </div>
+                            <div class="card-img-container">${imagenHtml}</div>
+                            <div class="card-body">
+                                <p class="card-desc" title="${p.descripcion}">${p.descripcion}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price-label">Precio</span>
+                            <span class="price-value">${p.precio}</span>
+                        </div>
+                    </div>`;
+            });
+            grid.innerHTML = html;
+        }
+
+        function abrirModal(index) {
+            const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
+            const palabrasBusqueda = textoBusqueda.split(/\s+/);
+            const filtrados = catalogoGlobal.filter(item => {
+                const coincideMarca = (marcaSeleccionada === 'TODAS' || item.marca === marcaSeleccionada);
+                if (!coincideMarca) return false;
+                if (textoBusqueda === "") return true;
+                const textoObjetivo = (item.codigo + " " + item.descripcion).toLowerCase();
+                return palabrasBusqueda.every(palabra => textoObjetivo.includes(palabra));
+            });
+
+            const p = filtrados[index];
+            if (!p) return;
+
+            document.getElementById('modal-codigo').innerText = p.codigo;
+            document.getElementById('modal-marca').innerText = p.marca;
+            document.getElementById('modal-descripcion').innerText = p.descripcion;
+            document.getElementById('modal-precio').innerText = p.precio;
+
+            const imgContainer = document.getElementById('modal-img-container');
+            imgContainer.innerHTML = p.imagen ? `<img src="${p.imagen}" alt="${p.codigo}">` : `
+                <div class="no-img" style="font-size: 12px;">
+                    <svg style="width: 40px; height: 40px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span>Sin Imagen Disponible</span>
+                </div>`;
+
+            document.getElementById('modal-detalle').classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-detalle').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
