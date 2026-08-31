@@ -54,7 +54,6 @@
         .filtro-btn:hover { background: rgba(0, 0, 0, 0.5); border-color: rgba(255,255,255,0.3); }
         .filtro-btn.active { background: #dc2626; color: white; border-color: #ef4444; box-shadow: 0 2px 6px rgba(220,38,38,0.4); }
 
-        /* Estilos del Carrusel Publicitario */
         .carousel-container { max-width: 1200px; margin: 16px auto; position: relative; border-radius: 12px; overflow: hidden; background: #1a1a1a; border: 1px solid #2d2d2d; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
         .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
         .carousel-slide { min-width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; background: #000; }
@@ -74,13 +73,16 @@
         main { max-width: 1200px; margin: 0 auto; padding: 10px 10px 24px 10px; flex-grow: 1; width: 100%; }
         @media(min-width: 768px) { main { padding: 16px 16px 32px 16px; } }
 
-        #loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 0; }
-        .spinner { border: 3px solid #2d2d2d; border-top: 3px solid #dc2626; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 12px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
+        /* Estilos de Tarjetas Esqueleto (Carga animada) */
         .grid-productos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         @media(min-width: 640px) { .grid-productos { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
         @media(min-width: 1024px) { .grid-productos { grid-template-columns: repeat(5, 1fr); gap: 16px; } }
+
+        .skeleton-card { background: #1a1a1a; border: 1px solid #2d2d2d; border-radius: 8px; height: 210px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; animation: pulse 1.5s infinite; }
+        .skeleton-header { height: 24px; background: #262626; }
+        .skeleton-img { height: 110px; background: #222222; }
+        .skeleton-body { height: 35px; background: #262626; margin: 8px; border-radius: 4px; }
+        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
         .card { background: #1e1e1e; border: 1px solid #2d2d2d; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: all 0.2s; cursor: pointer; }
         .card:hover { border-color: #dc2626; box-shadow: 0 4px 12px rgba(220,38,38,0.15); transform: translateY(-2px); }
@@ -150,7 +152,6 @@
             </div>
         </div>
 
-        <!-- Botones de las 4 hojas -->
         <div class="filters-container">
             <div class="filters-scroll" id="contenedor-filtros">
                 <button onclick="seleccionarHoja('General')" class="filtro-btn active" data-hoja="General">General</button>
@@ -169,17 +170,20 @@
             <div class="carousel-dots" id="carousel-dots"></div>
         </div>
 
-        <div id="loading">
-            <div class="spinner"></div>
-            <p style="color: #94a3b8; font-size: 13px; font-weight: 500;">Sincronizando inventario...</p>
-        </div>
-
         <div id="no-results" class="hidden text-center" style="padding: 40px 0;">
             <p style="font-size: 16px; font-weight: 600; color: #cbd5e1;">No se encontraron productos en esta sección</p>
             <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Intenta ajustando los términos de búsqueda.</p>
         </div>
 
-        <div id="grid-productos" class="grid-productos"></div>
+        <!-- Cuadrícula inicial con Esqueletos de carga simulados -->
+        <div id="grid-productos" class="grid-productos">
+            <div class="skeleton-card"><div class="skeleton-header"></div><div class="skeleton-img"></div><div class="skeleton-body"></div></div>
+            <div class="skeleton-card"><div class="skeleton-header"></div><div class="skeleton-img"></div><div class="skeleton-body"></div></div>
+            <div class="skeleton-card"><div class="skeleton-header"></div><div class="skeleton-img"></div><div class="skeleton-body"></div></div>
+            <div class="skeleton-card"><div class="skeleton-header"></div><div class="skeleton-img"></div><div class="skeleton-body"></div></div>
+            <div class="skeleton-card"><div class="skeleton-header"></div><div class="skeleton-img"></div><div class="skeleton-body"></div></div>
+            <div class="skeleton-card"><div class="skeleton-header"></div><div class="skeleton-img"></div><div class="skeleton-body"></div></div>
+        </div>
     </main>
 
     <div id="modal-detalle" class="hidden modal-overlay" onclick="cerrarModal()">
@@ -226,11 +230,9 @@
                     if (data.banners && data.banners.length > 0) {
                         renderizarCarrusel(data.banners);
                     }
-
-                    document.getElementById('loading').style.display = 'none';
                 })
                 .catch(error => {
-                    document.getElementById('loading').innerHTML = `<p style="color: #ef4444; font-weight: 500;">Error al cargar los datos</p>`;
+                    document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al sincronizar inventario</p>`;
                 });
         };
 
@@ -243,7 +245,6 @@
                     btn.classList.remove('active');
                 }
             });
-            // Limpiar buscador al cambiar de pestaña
             document.getElementById('input-buscador').value = '';
             filtrarProductos();
         }
@@ -251,8 +252,6 @@
         function filtrarProductos() {
             const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
             const palabrasBusqueda = textoBusqueda.split(/\s+/);
-
-            // Obtener únicamente los productos de la hoja seleccionada
             const listaHoja = datosGlobales[hojaSeleccionada] || [];
 
             const filtrados = listaHoja.filter(item => {
