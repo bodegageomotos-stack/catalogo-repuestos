@@ -15,17 +15,17 @@
         
         body { background-color: #121212; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; }
         
-        /* 🚀 Pantalla de Carga Inmersiva con Animación Lottie */
+        /* 🚀 Pantalla de Carga Limpia, Agresiva y de Lado a Lado */
         #splash-screen {
             position: fixed;
             inset: 0;
-            background: #05070b;
+            background: #030508;
             z-index: 9999;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 22px;
             transition: opacity 0.6s ease, visibility 0.6s ease;
             padding: 20px;
             overflow: hidden;
@@ -35,24 +35,30 @@
             visibility: hidden;
         }
 
-        /* Fondo dinámico con líneas de velocidad */
-        #splash-screen::before {
-            content: "";
+        /* Pista de carreras superior donde el motociclista cruza de lado a lado */
+        .moto-track {
             position: absolute;
-            inset: -50%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 40px,
-                rgba(220, 38, 38, 0.04) 40px,
-                rgba(220, 38, 38, 0.04) 80px
-            );
-            animation: speedLines 3s linear infinite;
-            z-index: 1;
+            top: 12%;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            z-index: 3;
         }
-        @keyframes speedLines {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+
+        .moto-traveler {
+            position: absolute;
+            width: 220px;
+            height: 150px;
+            animation: driveAcross 4s linear infinite;
+        }
+
+        @keyframes driveAcross {
+            0% { transform: translateX(-250px) scaleX(1); }
+            48% { transform: translateX(calc(100vw + 50px)) scaleX(1); }
+            50% { transform: translateX(calc(100vw + 50px)) scaleX(-1); }
+            98% { transform: translateX(-250px) scaleX(-1); }
+            100% { transform: translateX(-250px) scaleX(1); }
         }
 
         .splash-content-box {
@@ -61,31 +67,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
-            max-width: 440px;
+            gap: 16px;
+            max-width: 480px;
             width: 100%;
-            background: rgba(13, 17, 23, 0.9);
-            border: 1px solid rgba(220, 38, 38, 0.35);
-            border-radius: 16px;
-            padding: 24px 20px;
-            box-shadow: 0 0 50px rgba(220, 38, 38, 0.3), inset 0 0 20px rgba(220, 38, 38, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 20, 0.92);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            border-radius: 20px;
+            padding: 35px 24px;
+            box-shadow: 0 0 60px rgba(220, 38, 38, 0.25), inset 0 0 25px rgba(220, 38, 38, 0.08);
+            backdrop-filter: blur(12px);
+            margin-top: 60px;
         }
 
-        /* Contenedor de la animación Lottie (.lottie) */
-        .lottie-container {
-            width: 180px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
+        /* Logo corporativo grande y protagonista */
         .splash-logo {
-            width: 130px;
+            width: 200px;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.6));
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.7));
+            animation: pulseLogo 2s infinite ease-in-out;
+        }
+        @keyframes pulseLogo {
+            0% { transform: scale(0.97); }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.95)); }
+            100% { transform: scale(0.97); }
         }
 
         .splash-text {
@@ -98,7 +103,7 @@
 
         .splash-progress-bar {
             width: 100%;
-            max-width: 260px;
+            max-width: 280px;
             height: 5px;
             background: #1e293b;
             border-radius: 4px;
@@ -127,7 +132,7 @@
             background: rgba(220, 38, 38, 0.15);
             border: 1px solid rgba(220, 38, 38, 0.4);
             color: #f1f5f9;
-            padding: 8px 22px;
+            padding: 9px 24px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 700;
@@ -262,17 +267,20 @@
 </head>
 <body>
 
-    <!-- 🚀 Pantalla de Carga con Animación Lottie Personalizada -->
+    <!-- 🚀 Pantalla de Carga Optimizada: Fondo Limpio, Logo Grande y Moto Cruzando -->
     <div id="splash-screen">
-        <div class="splash-content-box">
-            <div class="lottie-container">
+        <!-- Pista superior para la animación de lado a lado -->
+        <div class="moto-track">
+            <div class="moto-traveler">
                 <dotlottie-wc src="Old%20Rider.lottie" autoplay loop></dotlottie-wc>
             </div>
-            
+        </div>
+
+        <div class="splash-content-box">
             <img src="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM" alt="Logo Empresa" class="splash-logo">
             
             <div style="text-align: center;">
-                <p style="color: #ffffff; font-weight: 800; font-size: 17px; margin-bottom: 4px; letter-spacing: 0.5px;">GEO Motorcycle Colombia S.A.S.</p>
+                <p style="color: #ffffff; font-weight: 800; font-size: 18px; margin-bottom: 6px; letter-spacing: 0.5px;">GEO Motorcycle Colombia S.A.S.</p>
                 <p class="splash-text">La ruta segura hacia la máxima rentabilidad y disponibilidad de repuestos.</p>
             </div>
             
@@ -554,4 +562,5 @@
         }
     </script>
 </body>
+</html>
 </html>
