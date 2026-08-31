@@ -12,7 +12,7 @@
         
         body { background-color: #121212; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; }
         
-        /* 🚀 Pantalla de Carga Optimizada */
+        /* 🚀 Pantalla de Carga Interactiva con Órbita de Motociclista */
         #splash-screen {
             position: fixed;
             inset: 0;
@@ -30,19 +30,57 @@
             opacity: 0;
             visibility: hidden;
         }
+
+        /* Contenedor central del Logo y la Pista de la Moto */
+        .splash-logo-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .splash-logo {
-            width: 180px;
+            width: 110px;
             height: auto;
-            max-height: 140px;
             object-fit: contain;
             animation: pulseLogo 2s infinite ease-in-out;
             filter: drop-shadow(0 4px 16px rgba(220, 38, 38, 0.5));
+            z-index: 2;
         }
         @keyframes pulseLogo {
             0% { transform: scale(0.95); opacity: 0.85; }
             50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 6px 24px rgba(220, 38, 38, 0.8)); }
             100% { transform: scale(0.95); opacity: 0.85; }
         }
+
+        /* Órbita donde gira la moto */
+        .moto-orbit {
+            position: absolute;
+            inset: -15px;
+            border: 2px dashed rgba(220, 38, 38, 0.3);
+            border-radius: 50%;
+            animation: spinOrbit 4s linear infinite;
+            z-index: 3;
+        }
+        @keyframes spinOrbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Silueta vectorial de la moto con el motociclista */
+        .moto-icon {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 28px;
+            fill: #ef4444;
+            filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
+        }
+
         .splash-text {
             font-size: 13px;
             color: #94a3b8;
@@ -211,9 +249,16 @@
 </head>
 <body>
 
-    <!-- 🚀 Pantalla de Carga Optimizada con Eslogan Comercial -->
+    <!-- 🚀 Pantalla de Carga con Motociclista en Órbita -->
     <div id="splash-screen">
-        <img src="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM" alt="Logo Empresa" class="splash-logo">
+        <div class="splash-logo-container">
+            <div class="moto-orbit">
+                <svg class="moto-icon" viewBox="0 0 24 24">
+                    <path d="M19,17H22V15H19.38C19.68,14.28 19.89,13.5 19.96,12.69C20.67,12.5 21.25,12 21.5,11.31C21.8,10.5 21.64,9.6 21.1,9C20.55,8.4 19.7,8.12 18.9,8.32C18.4,8.44 17.95,8.71 17.6,9.1C16.85,7.9 15.6,7 14.1,6.7C13.8,4.5 11.9,3 9.6,3C7.5,3 5.7,4.4 5.2,6.4C3.8,6.8 2.8,8.1 2.8,9.6C2.8,11.3 4.2,12.7 5.9,12.7C6.3,12.7 6.7,12.6 7.1,12.4C7.7,13.8 8.8,15 10.2,15.7V17H6C4.9,17 4,17.9 4,19V20H6V19H10V21H12V18.5C11.1,18.2 10.4,17.7 9.8,17C9.3,16.5 8.9,15.9 8.6,15.2C9.2,15.1 9.8,14.8 10.3,14.4C12.4,14.7 14.4,13.7 15.2,11.8C16.2,12.1 17.3,12 18.2,11.5C18.1,12.1 17.9,12.7 17.6,13.2C17.3,13.7 16.9,14.2 16.5,14.6C17.4,14.8 18.2,15.2 18.9,15.8C19.3,16.1 19.6,16.5 19,17M9.5,5C10.9,5 12,6.1 12,7.5C12,8.9 10.9,10 9.5,10C8.1,10 7,8.9 7,7.5C7,6.1 8.1,5 9.5,5Z"/>
+                </svg>
+            </div>
+            <img src="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM" alt="Logo Empresa" class="splash-logo">
+        </div>
         <div style="text-align: center;">
             <p style="color: #ffffff; font-weight: 700; font-size: 18px; margin-bottom: 6px;">GEO Motorcycle Colombia S.A.S.</p>
             <p class="splash-text">La ruta segura hacia la máxima rentabilidad y disponibilidad de repuestos.</p>
