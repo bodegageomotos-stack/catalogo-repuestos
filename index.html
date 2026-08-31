@@ -12,6 +12,84 @@
         
         body { background-color: #121212; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; }
         
+        /* 🚀 Pantalla de Carga Interactiva (Splash Screen) */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background: #0b0f19;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            padding: 20px;
+        }
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .splash-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            animation: pulseLogo 2s infinite ease-in-out;
+            filter: drop-shadow(0 4px 12px rgba(220, 38, 38, 0.4));
+        }
+        @keyframes pulseLogo {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 6px 20px rgba(220, 38, 38, 0.7)); }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .splash-text {
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .splash-progress-bar {
+            width: 200px;
+            height: 4px;
+            background: #1e293b;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .splash-progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 40%;
+            background: #dc2626;
+            border-radius: 4px;
+            animation: loadingMove 1.5s infinite ease-in-out;
+        }
+        @keyframes loadingMove {
+            0% { left: -40%; width: 40%; }
+            50% { left: 20%; width: 60%; }
+            100% { left: 100%; width: 40%; }
+        }
+        .splash-skip-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #cbd5e1;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+        .splash-skip-btn:hover {
+            background: #dc2626;
+            color: white;
+            border-color: #ef4444;
+        }
+
         header { 
             background: linear-gradient(180deg, #991b1b 0%, #3f1111 50%, #121212 100%);
             border-bottom: 1px solid #2d2d2d; 
@@ -73,7 +151,6 @@
         main { max-width: 1200px; margin: 0 auto; padding: 10px 10px 24px 10px; flex-grow: 1; width: 100%; }
         @media(min-width: 768px) { main { padding: 16px 16px 32px 16px; } }
 
-        /* Estilos de Tarjetas Esqueleto (Carga animada) */
         .grid-productos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         @media(min-width: 640px) { .grid-productos { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
         @media(min-width: 1024px) { .grid-productos { grid-template-columns: repeat(5, 1fr); gap: 16px; } }
@@ -132,6 +209,19 @@
 </head>
 <body>
 
+    <!-- 🚀 Pantalla de Carga Interactiva -->
+    <div id="splash-screen">
+        <img src="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM" alt="Logo Empresa" class="splash-logo">
+        <div style="text-align: center;">
+            <p style="color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 4px;">GEO Motorcycle Colombia</p>
+            <p class="splash-text">Impulsando tu camino sobre dos ruedas...</p>
+        </div>
+        <div class="splash-progress-bar">
+            <div class="splash-progress-fill"></div>
+        </div>
+        <button class="splash-skip-btn" onclick="quitarSplashScreen()">Omitir y Ver Catálogo</button>
+    </div>
+
     <header>
         <div class="header-content">
             <div class="logo-area">
@@ -175,7 +265,6 @@
             <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Intenta ajustando los términos de búsqueda.</p>
         </div>
 
-        <!-- Cuadrícula inicial con Esqueletos de carga simulados -->
         <div id="grid-productos" class="grid-productos">
             <div class="skeleton-card"><div class="skeleton-header"></div><div class="skeleton-img"></div><div class="skeleton-body"></div></div>
             <div class="skeleton-card"><div class="skeleton-header"></div><div class="skeleton-img"></div><div class="skeleton-body"></div></div>
@@ -230,11 +319,25 @@
                     if (data.banners && data.banners.length > 0) {
                         renderizarCarrusel(data.banners);
                     }
+
+                    // Ocultar la pantalla de carga con elegancia al terminar de sincronizar
+                    quitarSplashScreen();
                 })
                 .catch(error => {
+                    quitarSplashScreen();
                     document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al sincronizar inventario</p>`;
                 });
         };
+
+        function quitarSplashScreen() {
+            const splash = document.getElementById('splash-screen');
+            if (splash && !splash.classList.contains('fade-out')) {
+                splash.classList.add('fade-out');
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 500);
+            }
+        }
 
         function seleccionarHoja(hoja) {
             hojaSeleccionada = hoja;
