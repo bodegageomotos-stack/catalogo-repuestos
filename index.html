@@ -12,7 +12,7 @@
         
         body { background-color: #121212; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; }
         
-        /* 🚀 Pantalla de Carga Interactiva (Splash Screen) */
+        /* 🚀 Pantalla de Carga Optimizada (Splash Screen) */
         #splash-screen {
             position: fixed;
             inset: 0;
@@ -30,27 +30,30 @@
             opacity: 0;
             visibility: hidden;
         }
+        /* Logo corporativo con mayor presencia y tamaño */
         .splash-logo {
-            width: 90px;
-            height: 90px;
+            width: 180px;
+            height: auto;
+            max-height: 140px;
             object-fit: contain;
             animation: pulseLogo 2s infinite ease-in-out;
-            filter: drop-shadow(0 4px 12px rgba(220, 38, 38, 0.4));
+            filter: drop-shadow(0 4px 16px rgba(220, 38, 38, 0.5));
         }
         @keyframes pulseLogo {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 6px 20px rgba(220, 38, 38, 0.7)); }
-            100% { transform: scale(0.95); opacity: 0.8; }
+            0% { transform: scale(0.95); opacity: 0.85; }
+            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 6px 24px rgba(220, 38, 38, 0.8)); }
+            100% { transform: scale(0.95); opacity: 0.85; }
         }
         .splash-text {
-            font-size: 14px;
+            font-size: 13px;
             color: #94a3b8;
             font-weight: 500;
             text-align: center;
             letter-spacing: 0.5px;
+            max-width: 300px;
         }
         .splash-progress-bar {
-            width: 200px;
+            width: 220px;
             height: 4px;
             background: #1e293b;
             border-radius: 4px;
@@ -209,12 +212,12 @@
 </head>
 <body>
 
-    <!-- 🚀 Pantalla de Carga Interactiva -->
+    <!-- 🚀 Pantalla de Carga Interactiva y Mayorista -->
     <div id="splash-screen">
         <img src="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM" alt="Logo Empresa" class="splash-logo">
         <div style="text-align: center;">
-            <p style="color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 4px;">GEO Motorcycle Colombia</p>
-            <p class="splash-text">Impulsando tu camino sobre dos ruedas...</p>
+            <p style="color: #ffffff; font-weight: 700; font-size: 18px; margin-bottom: 6px;">GEO Motorcycle Colombia S.A.S.</p>
+            <p class="splash-text">Abasteciendo a distribuidores y mayoristas a nivel nacional</p>
         </div>
         <div class="splash-progress-bar">
             <div class="splash-progress-fill"></div>
@@ -310,6 +313,11 @@
         let intervaloAutoSlide;
 
         window.onload = function() {
+            // ⏱️ Temporizador estricto de 4 segundos: La animación se quita sola pase lo que pase
+            setTimeout(() => {
+                quitarSplashScreen();
+            }, 4000);
+
             fetch(URL_API)
                 .then(response => response.json())
                 .then(data => {
@@ -320,7 +328,6 @@
                         renderizarCarrusel(data.banners);
                     }
 
-                    // Ocultar la pantalla de carga con elegancia al terminar de sincronizar
                     quitarSplashScreen();
                 })
                 .catch(error => {
