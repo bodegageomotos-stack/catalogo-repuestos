@@ -50,7 +50,7 @@
         .filters-scroll::-webkit-scrollbar { height: 4px; }
         .filters-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
 
-        .filtro-btn { padding: 7px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.15); background: rgba(0, 0, 0, 0.3); color: #e2e8f0; transition: all 0.2s; flex-shrink: 0; backdrop-filter: blur(4px); }
+        .filtro-btn { padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer; border: 1px solid rgba(255,255,255,0.15); background: rgba(0, 0, 0, 0.3); color: #e2e8f0; transition: all 0.2s; flex-shrink: 0; backdrop-filter: blur(4px); }
         .filtro-btn:hover { background: rgba(0, 0, 0, 0.5); border-color: rgba(255,255,255,0.3); }
         .filtro-btn.active { background: #dc2626; color: white; border-color: #ef4444; box-shadow: 0 2px 6px rgba(220,38,38,0.4); }
 
@@ -150,15 +150,18 @@
             </div>
         </div>
 
+        <!-- Botones de las 4 hojas -->
         <div class="filters-container">
             <div class="filters-scroll" id="contenedor-filtros">
-                <button onclick="seleccionarMarca('TODAS')" class="filtro-btn active" data-marca="TODAS">Todas</button>
+                <button onclick="seleccionarHoja('General')" class="filtro-btn active" data-hoja="General">General</button>
+                <button onclick="seleccionarHoja('Bajaj')" class="filtro-btn" data-hoja="Bajaj">Bajaj</button>
+                <button onclick="seleccionarHoja('Harkes')" class="filtro-btn" data-hoja="Harkes">Harkes</button>
+                <button onclick="seleccionarHoja('Varios')" class="filtro-btn" data-hoja="Varios">Varios</button>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Contenedor del Carrusel Publicitario -->
         <div id="contenedor-carrusel" class="carousel-container hidden">
             <div class="carousel-track" id="carousel-track"></div>
             <button class="carousel-btn carousel-prev" onclick="moverSlide(-1)">&#10094;</button>
@@ -168,12 +171,12 @@
 
         <div id="loading">
             <div class="spinner"></div>
-            <p style="color: #94a3b8; font-size: 13px; font-weight: 500;">Sincronizando productos y banners...</p>
+            <p style="color: #94a3b8; font-size: 13px; font-weight: 500;">Sincronizando inventario...</p>
         </div>
 
         <div id="no-results" class="hidden text-center" style="padding: 40px 0;">
-            <p style="font-size: 16px; font-weight: 600; color: #cbd5e1;">No se encontraron productos</p>
-            <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Intenta ajustando los términos de búsqueda o cambiando de marca.</p>
+            <p style="font-size: 16px; font-weight: 600; color: #cbd5e1;">No se encontraron productos en esta sección</p>
+            <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Intenta ajustando los términos de búsqueda.</p>
         </div>
 
         <div id="grid-productos" class="grid-productos"></div>
@@ -205,9 +208,8 @@
     </footer>
 
     <script>
-        let catalogoGlobal = [];
-        let marcaSeleccionada = 'TODAS';
-        const listaMarcas = ["North Panthr", "Panther", "KCC", "Harkes", "Bajaj", "Thunder", "Koyo", "Pfi", "Otros"];
+        let datosGlobales = {};
+        let hojaSeleccionada = 'General';
         const URL_API = "https://script.google.com/macros/s/AKfycbz3q9-bhwsyxHiKOORF13a-rRf_KCgbcsoycA1BVzGK-OLAPYntbHDbVgonXM9OCigB/exec";
 
         let slideActual = 0;
@@ -218,9 +220,8 @@
             fetch(URL_API)
                 .then(response => response.json())
                 .then(data => {
-                    catalogoGlobal = data.catalogo;
-                    inicializarFiltros();
-                    renderizarProductos(catalogoGlobal);
+                    datosGlobales = data.catalogos;
+                    filtrarProductos();
                     
                     if (data.banners && data.banners.length > 0) {
                         renderizarCarrusel(data.banners);
@@ -232,6 +233,111 @@
                     document.getElementById('loading').innerHTML = `<p style="color: #ef4444; font-weight: 500;">Error al cargar los datos</p>`;
                 });
         };
+
+        function seleccionarHoja(hoja) {
+            hojaSeleccionada = hoja;
+            document.querySelectorAll('.filtro-btn').forEach(btn => {
+                if(btn.getAttribute('data-hoja') === hoja) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            // Limpiar buscador al cambiar de pestaña
+            document.getElementById('input-buscador').value = '';
+            filtrarProductos();
+        }
+
+        function filtrarProductos() {
+            const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
+            const palabrasBusqueda = textoBusqueda.split(/\s+/);
+
+            // Obtener únicamente los productos de la hoja seleccionada
+            const listaHoja = datosGlobales[hojaSeleccionada] || [];
+
+            const filtrados = listaHoja.filter(item => {
+                if (textoBusqueda === "") return true;
+                const textoObjetivo = (item.codigo + " " + item.descripcion).toLowerCase();
+                return palabrasBusqueda.every(palabra => textoObjetivo.includes(palabra));
+            });
+
+            renderizarProductos(filtrados);
+        }
+
+        function renderizarProductos(productos) {
+            const grid = document.getElementById('grid-productos');
+            const noResults = document.getElementById('no-results');
+            document.getElementById('contador-productos').innerText = `${productos.length} productos en ${hojaSeleccionada}`;
+
+            if (productos.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            let html = '';
+
+            productos.forEach((p, index) => {
+                let imagenHtml = p.imagen ? `<img src="${p.imagen}" alt="${p.codigo}" loading="lazy">` : `
+                    <div class="no-img">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>Sin Imagen</span>
+                    </div>`;
+
+                html += `
+                    <div class="card" onclick="abrirModal(${index})">
+                        <div>
+                            <div class="card-header">
+                                <span>${p.codigo}</span>
+                                <span class="card-badge">${p.categoria}</span>
+                            </div>
+                            <div class="card-img-container">${imagenHtml}</div>
+                            <div class="card-body">
+                                <p class="card-desc" title="${p.descripcion}">${p.descripcion}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="price-label">Precio</span>
+                            <span class="price-value">${p.precio}</span>
+                        </div>
+                    </div>`;
+            });
+            grid.innerHTML = html;
+        }
+
+        function abrirModal(index) {
+            const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
+            const palabrasBusqueda = textoBusqueda.split(/\s+/);
+            const listaHoja = datosGlobales[hojaSeleccionada] || [];
+
+            const filtrados = listaHoja.filter(item => {
+                if (textoBusqueda === "") return true;
+                const textoObjetivo = (item.codigo + " " + item.descripcion).toLowerCase();
+                return palabrasBusqueda.every(palabra => textoObjetivo.includes(palabra));
+            });
+
+            const p = filtrados[index];
+            if (!p) return;
+
+            document.getElementById('modal-codigo').innerText = p.codigo;
+            document.getElementById('modal-marca').innerText = p.categoria;
+            document.getElementById('modal-descripcion').innerText = p.descripcion;
+            document.getElementById('modal-precio').innerText = p.precio;
+
+            const imgContainer = document.getElementById('modal-img-container');
+            imgContainer.innerHTML = p.imagen ? `<img src="${p.imagen}" alt="${p.codigo}">` : `
+                <div class="no-img" style="font-size: 12px; background: #161616; color: #64748b;">
+                    <svg style="width: 40px; height: 40px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span>Sin Imagen Disponible</span>
+                </div>`;
+
+            document.getElementById('modal-detalle').classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-detalle').classList.add('hidden');
+        }
 
         function renderizarCarrusel(banners) {
             const track = document.getElementById('carousel-track');
@@ -250,7 +356,6 @@
             dotsContainer.innerHTML = dotsHtml;
             document.getElementById('contenedor-carrusel').classList.remove('hidden');
 
-            // Iniciar movimiento automático cada 4 segundos
             intervaloAutoSlide = setInterval(() => {
                 moverSlide(1);
             }, 4000);
@@ -278,118 +383,6 @@
                     dot.classList.remove('active');
                 }
             });
-        }
-
-        function inicializarFiltros() {
-            const contenedor = document.getElementById('contenedor-filtros');
-            let html = `<button onclick="seleccionarMarca('TODAS')" class="filtro-btn active" data-marca="TODAS">Todas</button>`;
-            listaMarcas.forEach(m => {
-                html += `<button onclick="seleccionarMarca('${m}')" class="filtro-btn" data-marca="${m}">${m}</button>`;
-            });
-            contenedor.innerHTML = html;
-        }
-
-        function seleccionarMarca(marca) {
-            marcaSeleccionada = marca;
-            document.querySelectorAll('.filtro-btn').forEach(btn => {
-                if(btn.getAttribute('data-marca') === marca) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-            filtrarProductos();
-        }
-
-        function filtrarProductos() {
-            const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
-            const palabrasBusqueda = textoBusqueda.split(/\s+/);
-
-            const filtrados = catalogoGlobal.filter(item => {
-                const coincideMarca = (marcaSeleccionada === 'TODAS' || item.marca === marcaSeleccionada);
-                if (!coincideMarca) return false;
-                if (textoBusqueda === "") return true;
-
-                const textoObjetivo = (item.codigo + " " + item.descripcion).toLowerCase();
-                return palabrasBusqueda.every(palabra => textoObjetivo.includes(palabra));
-            });
-
-            renderizarProductos(filtrados);
-        }
-
-        function renderizarProductos(productos) {
-            const grid = document.getElementById('grid-productos');
-            const noResults = document.getElementById('no-results');
-            document.getElementById('contador-productos').innerText = `${productos.length} productos disponibles`;
-
-            if (productos.length === 0) {
-                grid.innerHTML = '';
-                noResults.classList.remove('hidden');
-                return;
-            }
-
-            noResults.classList.add('hidden');
-            let html = '';
-
-            productos.forEach((p, index) => {
-                let imagenHtml = p.imagen ? `<img src="${p.imagen}" alt="${p.codigo}" loading="lazy">` : `
-                    <div class="no-img">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        <span>Sin Imagen</span>
-                    </div>`;
-
-                html += `
-                    <div class="card" onclick="abrirModal(${index})">
-                        <div>
-                            <div class="card-header">
-                                <span>${p.codigo}</span>
-                                <span class="card-badge">${p.marca}</span>
-                            </div>
-                            <div class="card-img-container">${imagenHtml}</div>
-                            <div class="card-body">
-                                <p class="card-desc" title="${p.descripcion}">${p.descripcion}</p>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <span class="price-label">Precio</span>
-                            <span class="price-value">${p.precio}</span>
-                        </div>
-                    </div>`;
-            });
-            grid.innerHTML = html;
-        }
-
-        function abrirModal(index) {
-            const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
-            const palabrasBusqueda = textoBusqueda.split(/\s+/);
-            const filtrados = catalogoGlobal.filter(item => {
-                const coincideMarca = (marcaSeleccionada === 'TODAS' || item.marca === marcaSeleccionada);
-                if (!coincideMarca) return false;
-                if (textoBusqueda === "") return true;
-                const textoObjetivo = (item.codigo + " " + item.descripcion).toLowerCase();
-                return palabrasBusqueda.every(palabra => textoObjetivo.includes(palabra));
-            });
-
-            const p = filtrados[index];
-            if (!p) return;
-
-            document.getElementById('modal-codigo').innerText = p.codigo;
-            document.getElementById('modal-marca').innerText = p.marca;
-            document.getElementById('modal-descripcion').innerText = p.descripcion;
-            document.getElementById('modal-precio').innerText = p.precio;
-
-            const imgContainer = document.getElementById('modal-img-container');
-            imgContainer.innerHTML = p.imagen ? `<img src="${p.imagen}" alt="${p.codigo}">` : `
-                <div class="no-img" style="font-size: 12px; background: #161616; color: #64748b;">
-                    <svg style="width: 40px; height: 40px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <span>Sin Imagen Disponible</span>
-                </div>`;
-
-            document.getElementById('modal-detalle').classList.remove('hidden');
-        }
-
-        function cerrarModal() {
-            document.getElementById('modal-detalle').classList.add('hidden');
         }
     </script>
 </body>
