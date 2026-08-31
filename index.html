@@ -222,9 +222,9 @@
         .card-badge { font-size: 8px; background: #dc2626; color: white; padding: 2px 6px; border-radius: 4px; font-weight: normal; }
         @media(min-width: 768px) { .card-badge { font-size: 9px; } }
 
-        /* Contenedor de imagen cuadrado y optimizado para formato 1080x1080 */
-        .card-img-container { width: 100%; aspect-ratio: 1 / 1; background: #ffffff; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #2d2d2d; position: relative; overflow: hidden; }
-        .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        /* Contenedor de imagen optimizado con object-fit: contain para mostrar toda la imagen original sin recortes */
+        .card-img-container { width: 100%; aspect-ratio: 1 / 1; background: #ffffff; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #2d2d2d; position: relative; overflow: hidden; padding: 4px; }
+        .card-img-container img { width: 100%; height: 100%; object-fit: contain; }
         
         .no-img { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #64748b; font-size: 9px; font-weight: 500; text-transform: uppercase; gap: 3px; background: #161616; width: 100%; height: 100%; }
         @media(min-width: 768px) { .no-img { font-size: 10px; } }
