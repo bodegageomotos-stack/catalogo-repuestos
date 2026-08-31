@@ -12,73 +12,95 @@
         
         body { background-color: #121212; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; }
         
-        /* 🚀 Pantalla de Carga Interactiva con Órbita de Motociclista */
+        /* 🚀 Pantalla de Carga Inmersiva - Estilo Deportivo y Agresivo */
         #splash-screen {
             position: fixed;
             inset: 0;
-            background: #0b0f19;
+            background: #05070b;
             z-index: 9999;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            gap: 24px;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
             padding: 20px;
+            overflow: hidden;
         }
         #splash-screen.fade-out {
             opacity: 0;
             visibility: hidden;
         }
 
-        /* Contenedor central del Logo y la Pista de la Moto */
-        .splash-logo-container {
+        /* Fondo dinámico con líneas de velocidad diagonales */
+        #splash-screen::before {
+            content: "";
+            position: absolute;
+            inset: -50%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 40px,
+                rgba(220, 38, 38, 0.04) 40px,
+                rgba(220, 38, 38, 0.04) 80px
+            );
+            animation: speedLines 3s linear infinite;
+            z-index: 1;
+        }
+        @keyframes speedLines {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Contenedor central agresivo */
+        .splash-content-box {
             position: relative;
-            width: 160px;
-            height: 160px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            max-width: 450px;
+            width: 100%;
+            background: rgba(13, 17, 23, 0.85);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 0 50px rgba(220, 38, 38, 0.25), inset 0 0 20px rgba(220, 38, 38, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Silueta grande y agresiva de moto deportiva de carreras */
+        .sport-moto-container {
+            width: 140px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: motoRumble 0.2s infinite alternate;
+        }
+        @keyframes motoRumble {
+            0% { transform: translateY(0px) rotate(-1deg); }
+            100% { transform: translateY(-2px) rotate(1deg); }
+        }
+        .sport-moto-svg {
+            width: 100%;
+            height: 100%;
+            fill: #ef4444;
+            filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.9));
         }
 
         .splash-logo {
-            width: 110px;
+            width: 150px;
             height: auto;
             object-fit: contain;
-            animation: pulseLogo 2s infinite ease-in-out;
-            filter: drop-shadow(0 4px 16px rgba(220, 38, 38, 0.5));
-            z-index: 2;
+            animation: pulseLogo 1.8s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.6));
         }
         @keyframes pulseLogo {
-            0% { transform: scale(0.95); opacity: 0.85; }
-            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 6px 24px rgba(220, 38, 38, 0.8)); }
-            100% { transform: scale(0.95); opacity: 0.85; }
-        }
-
-        /* Órbita donde gira la moto */
-        .moto-orbit {
-            position: absolute;
-            inset: -15px;
-            border: 2px dashed rgba(220, 38, 38, 0.3);
-            border-radius: 50%;
-            animation: spinOrbit 4s linear infinite;
-            z-index: 3;
-        }
-        @keyframes spinOrbit {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Silueta vectorial de la moto con el motociclista */
-        .moto-icon {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 28px;
-            height: 28px;
-            fill: #ef4444;
-            filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
+            0% { transform: scale(0.98); filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.4)); }
+            50% { transform: scale(1.02); filter: drop-shadow(0 0 25px rgba(220, 38, 38, 0.9)); }
+            100% { transform: scale(0.98); filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.4)); }
         }
 
         .splash-text {
@@ -87,15 +109,17 @@
             font-weight: 500;
             text-align: center;
             letter-spacing: 0.5px;
-            max-width: 340px;
         }
+
         .splash-progress-bar {
-            width: 220px;
-            height: 4px;
+            width: 100%;
+            max-width: 260px;
+            height: 5px;
             background: #1e293b;
             border-radius: 4px;
             overflow: hidden;
             position: relative;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
         }
         .splash-progress-fill {
             position: absolute;
@@ -103,31 +127,35 @@
             top: 0;
             height: 100%;
             width: 40%;
-            background: #dc2626;
+            background: linear-gradient(90deg, #991b1b, #ef4444);
             border-radius: 4px;
-            animation: loadingMove 1.5s infinite ease-in-out;
+            animation: loadingMove 1.4s infinite ease-in-out;
+            box-shadow: 0 0 10px #ef4444;
         }
         @keyframes loadingMove {
             0% { left: -40%; width: 40%; }
             50% { left: 20%; width: 60%; }
             100% { left: 100%; width: 40%; }
         }
+
         .splash-skip-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #cbd5e1;
-            padding: 8px 20px;
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            color: #f1f5f9;
+            padding: 9px 24px;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
-            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .splash-skip-btn:hover {
             background: #dc2626;
             color: white;
             border-color: #ef4444;
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.6);
         }
 
         header { 
@@ -249,24 +277,29 @@
 </head>
 <body>
 
-    <!-- 🚀 Pantalla de Carga con Motociclista en Órbita -->
+    <!-- 🚀 Pantalla de Carga Inmersiva - Estilo Deportivo y Agresivo -->
     <div id="splash-screen">
-        <div class="splash-logo-container">
-            <div class="moto-orbit">
-                <svg class="moto-icon" viewBox="0 0 24 24">
-                    <path d="M19,17H22V15H19.38C19.68,14.28 19.89,13.5 19.96,12.69C20.67,12.5 21.25,12 21.5,11.31C21.8,10.5 21.64,9.6 21.1,9C20.55,8.4 19.7,8.12 18.9,8.32C18.4,8.44 17.95,8.71 17.6,9.1C16.85,7.9 15.6,7 14.1,6.7C13.8,4.5 11.9,3 9.6,3C7.5,3 5.7,4.4 5.2,6.4C3.8,6.8 2.8,8.1 2.8,9.6C2.8,11.3 4.2,12.7 5.9,12.7C6.3,12.7 6.7,12.6 7.1,12.4C7.7,13.8 8.8,15 10.2,15.7V17H6C4.9,17 4,17.9 4,19V20H6V19H10V21H12V18.5C11.1,18.2 10.4,17.7 9.8,17C9.3,16.5 8.9,15.9 8.6,15.2C9.2,15.1 9.8,14.8 10.3,14.4C12.4,14.7 14.4,13.7 15.2,11.8C16.2,12.1 17.3,12 18.2,11.5C18.1,12.1 17.9,12.7 17.6,13.2C17.3,13.7 16.9,14.2 16.5,14.6C17.4,14.8 18.2,15.2 18.9,15.8C19.3,16.1 19.6,16.5 19,17M9.5,5C10.9,5 12,6.1 12,7.5C12,8.9 10.9,10 9.5,10C8.1,10 7,8.9 7,7.5C7,6.1 8.1,5 9.5,5Z"/>
+        <div class="splash-content-box">
+            <!-- Silueta detallada de Motocicleta Deportiva -->
+            <div class="sport-moto-container">
+                <svg class="sport-moto-svg" viewBox="0 0 512 512">
+                    <path d="M485.4,248.8c-12.7-18.3-30.8-31.5-51.5-37.3l-34.6-58.7c-5-8.5-14.2-13.8-24.1-13.8H264.3c-6.8,0-13.2,2.7-18,7.5l-42.3,42.3 c-15.5-5.9-32.3-3.1-45.5,7.3L120.3,161c-4.4-2.8-9.9-3.5-14.9-1.8l-52.5,17.5c-8.7,2.9-14.6,11.1-14.6,20.4 c0,6.2,2.6,12.1,7.2,16.4l30.3,28.2c-7.9,13.2-12,28.6-11.7,44.2c0.7,35,29,63.7,64.1,64.4c35.6,0.7,64.7-27.7,64.7-63.3 c0-5.8-0.8-11.6-2.3-17.2l61.6-18.5h69.1l25.8,43.9c-12.9,9.4-21.3,24.8-21.3,42.2c0,28.9,23.5,52.4,52.4,52.4 c28.9,0,52.4-23.5,52.4-52.4c0-14.5-6-27.6-15.6-37.1l19.5-33.1C484.4,271.9,489.9,259.6,485.4,248.8z M161.7,321.7 c-21.3,0-38.6-17.3-38.6-38.6c0-21.3,17.3-38.6,38.6-38.6c21.3,0,38.6,17.3,38.6,38.6C200.3,304.4,183,321.7,161.7,321.7z M393.1,321.7c-21.3,0-38.6-17.3-38.6-38.6c0-21.3,17.3-38.6,38.6-38.6c21.3,0,38.6,17.3,38.6,38.6C431.7,304.4,414.4,321.7,393.1,321.7z"/>
                 </svg>
             </div>
+            
             <img src="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM" alt="Logo Empresa" class="splash-logo">
+            
+            <div style="text-align: center;">
+                <p style="color: #ffffff; font-weight: 800; font-size: 17px; margin-bottom: 4px; letter-spacing: 0.5px;">GEO Motorcycle Colombia S.A.S.</p>
+                <p class="splash-text">La ruta segura hacia la máxima rentabilidad y disponibilidad de repuestos.</p>
+            </div>
+            
+            <div class="splash-progress-bar">
+                <div class="splash-progress-fill"></div>
+            </div>
+            
+            <button class="splash-skip-btn" onclick="quitarSplashScreen()">Omitir Animación</button>
         </div>
-        <div style="text-align: center;">
-            <p style="color: #ffffff; font-weight: 700; font-size: 18px; margin-bottom: 6px;">GEO Motorcycle Colombia S.A.S.</p>
-            <p class="splash-text">La ruta segura hacia la máxima rentabilidad y disponibilidad de repuestos.</p>
-        </div>
-        <div class="splash-progress-bar">
-            <div class="splash-progress-fill"></div>
-        </div>
-        <button class="splash-skip-btn" onclick="quitarSplashScreen()">Omitir y Ver Catálogo</button>
     </div>
 
     <header>
@@ -386,7 +419,7 @@
                 splash.classList.add('fade-out');
                 setTimeout(() => {
                     splash.style.display = 'none';
-                }, 500);
+                }, 600);
             }
         }
 
