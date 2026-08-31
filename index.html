@@ -12,7 +12,7 @@
         
         body { background-color: #121212; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; }
         
-        /* 🚀 Pantalla de Carga Optimizada (Splash Screen) */
+        /* 🚀 Pantalla de Carga Optimizada */
         #splash-screen {
             position: fixed;
             inset: 0;
@@ -30,7 +30,6 @@
             opacity: 0;
             visibility: hidden;
         }
-        /* Logo corporativo con mayor presencia y tamaño */
         .splash-logo {
             width: 180px;
             height: auto;
@@ -50,7 +49,7 @@
             font-weight: 500;
             text-align: center;
             letter-spacing: 0.5px;
-            max-width: 300px;
+            max-width: 340px;
         }
         .splash-progress-bar {
             width: 220px;
@@ -212,12 +211,12 @@
 </head>
 <body>
 
-    <!-- 🚀 Pantalla de Carga Interactiva y Mayorista -->
+    <!-- 🚀 Pantalla de Carga Optimizada con Eslogan Comercial -->
     <div id="splash-screen">
         <img src="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM" alt="Logo Empresa" class="splash-logo">
         <div style="text-align: center;">
             <p style="color: #ffffff; font-weight: 700; font-size: 18px; margin-bottom: 6px;">GEO Motorcycle Colombia S.A.S.</p>
-            <p class="splash-text">Abasteciendo a distribuidores y mayoristas a nivel nacional</p>
+            <p class="splash-text">La ruta segura hacia la máxima rentabilidad y disponibilidad de repuestos.</p>
         </div>
         <div class="splash-progress-bar">
             <div class="splash-progress-fill"></div>
@@ -313,7 +312,7 @@
         let intervaloAutoSlide;
 
         window.onload = function() {
-            // ⏱️ Temporizador estricto de 4 segundos: La animación se quita sola pase lo que pase
+            // ⏱️ Temporizador estricto de exactamente 4 segundos para la animación de carga
             setTimeout(() => {
                 quitarSplashScreen();
             }, 4000);
@@ -399,7 +398,7 @@
                         <div>
                             <div class="card-header">
                                 <span>${p.codigo}</span>
-                                <span class="card-badge">${p.categoria}</span>
+                                <span class="card-badge">${p.marca}</span>
                             </div>
                             <div class="card-img-container">${imagenHtml}</div>
                             <div class="card-body">
@@ -430,7 +429,7 @@
             if (!p) return;
 
             document.getElementById('modal-codigo').innerText = p.codigo;
-            document.getElementById('modal-marca').innerText = p.categoria;
+            document.getElementById('modal-marca').innerText = p.marca;
             document.getElementById('modal-descripcion').innerText = p.descripcion;
             document.getElementById('modal-precio').innerText = p.precio;
 
