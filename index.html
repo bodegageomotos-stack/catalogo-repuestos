@@ -167,11 +167,21 @@
         h1 { font-size: 19px; font-weight: 800; color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
         @media(min-width: 768px) { h1 { font-size: 23px; } }
         
+        .header-right-group { display: flex; align-items: center; gap: 12px; width: 100%; }
+        @media(min-width: 768px) { .header-right-group { width: auto; } }
+
         #contador-productos { font-size: 12px; color: #cbd5e1; font-weight: 500; }
         @media(min-width: 768px) { #contador-productos { font-size: 13px; } }
 
+        /* Botón de Sincronización Manual */
+        .sync-btn { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #f1f5f9; padding: 10px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+        .sync-btn:hover { background: #dc2626; border-color: #ef4444; color: white; box-shadow: 0 0 10px rgba(220,38,38,0.4); }
+        .sync-btn svg { width: 15px; height: 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .syncing { animation: spin 1s linear infinite; }
+
         .search-box { width: 100%; position: relative; }
-        @media(min-width: 768px) { .search-box { width: 380px; } }
+        @media(min-width: 768px) { .search-box { width: 340px; } }
         .search-box input { width: 100%; padding: 11px 14px 11px 40px; border: 1px solid rgba(255,255,255,0.2); background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(4px); color: #ffffff; border-radius: 8px; font-size: 14px; outline: none; transition: all 0.2s; }
         .search-box input::placeholder { color: #94a3b8; }
         .search-box input:focus { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.3); background: #0f172a; }
@@ -222,7 +232,6 @@
         .card-badge { font-size: 8px; background: #dc2626; color: white; padding: 2px 6px; border-radius: 4px; font-weight: normal; }
         @media(min-width: 768px) { .card-badge { font-size: 9px; } }
 
-        /* Contenedor de imagen optimizado con object-fit: contain para mostrar toda la imagen original sin recortes */
         .card-img-container { width: 100%; aspect-ratio: 1 / 1; background: #ffffff; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #2d2d2d; position: relative; overflow: hidden; padding: 4px; }
         .card-img-container img { width: 100%; height: 100%; object-fit: contain; }
         
@@ -297,11 +306,17 @@
                 </div>
             </div>
             
-            <div class="search-box">
-                <input type="text" id="input-buscador" placeholder="Buscar por código o descripción..." oninput="filtrarProductos()">
-                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
+            <div class="header-right-group">
+                <button class="sync-btn" onclick="sincronizarDatos(true)" title="Actualizar datos desde Google Sheets">
+                    <svg id="sync-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    <span>Actualizar</span>
+                </button>
+                <div class="search-box">
+                    <input type="text" id="input-buscador" placeholder="Buscar por código o descripción..." oninput="filtrarProductos()">
+                    <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
             </div>
         </div>
 
@@ -365,6 +380,7 @@
 
     <script>
         let datosGlobales = {};
+        let bannersGlobales = [];
         let hojaSeleccionada = 'General';
         const URL_API = "https://script.google.com/macros/s/AKfycbz3q9-bhwsyxHiKOORF13a-rRf_KCgbcsoycA1BVzGK-OLAPYntbHDbVgonXM9OCigB/exec";
 
@@ -373,28 +389,64 @@
         let intervaloAutoSlide;
 
         window.onload = function() {
-            // ⏱️ Temporizador estricto de exactamente 4 segundos para la animación de carga
+            // ⏱️ Temporizador para asegurar que la pantalla de carga luzca excelente al menos 2.5 segundos
             setTimeout(() => {
                 quitarSplashScreen();
-            }, 4000);
+            }, 2500);
+
+            // ⚡ CARGA INMEDIATA DESDE CACHÉ (LocalStorage)
+            const datosCache = localStorage.getItem('geo_catalogo_datos');
+            const bannersCache = localStorage.getItem('geo_catalogo_banners');
+
+            if (datosCache && bannersCache) {
+                datosGlobales = JSON.parse(datosCache);
+                bannersGlobales = JSON.parse(bannersCache);
+                
+                filtrarProductos();
+                renderizarCarrusel(bannersGlobales);
+                quitarSplashScreen();
+            }
+
+            // 🔄 Actualización en segundo plano desde Google Sheets
+            sincronizarDatos(false);
+        };
+
+        function sincronizarDatos(forzarManual = false) {
+            const syncIcon = document.getElementById('sync-icon');
+            if (forzarManual) syncIcon.classList.add('syncing');
 
             fetch(URL_API)
                 .then(response => response.json())
                 .then(data => {
                     datosGlobales = data.catalogos;
+                    bannersGlobales = data.banners || [];
+
+                    // Guardar en la caché del navegador
+                    localStorage.setItem('geo_catalogo_datos', JSON.stringify(datosGlobales));
+                    localStorage.setItem('geo_catalogo_banners', JSON.stringify(bannersGlobales));
+
+                    // Refrescar la vista actual
                     filtrarProductos();
-                    
-                    if (data.banners && data.banners.length > 0) {
-                        renderizarCarrusel(data.banners);
+                    if (bannersGlobales.length > 0 && document.getElementById('contenedor-carrusel').classList.contains('hidden')) {
+                        renderizarCarrusel(bannersGlobales);
                     }
 
                     quitarSplashScreen();
+                    if (forzarManual) {
+                        setTimeout(() => syncIcon.classList.remove('syncing'), 800);
+                    }
                 })
                 .catch(error => {
+                    if (forzarManual) {
+                        syncIcon.classList.remove('syncing');
+                        alert("No se pudo conectar con Google Sheets. Se están mostrando los datos almacenados localmente.");
+                    }
                     quitarSplashScreen();
-                    document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al sincronizar inventario</p>`;
+                    if (!datosGlobales.General) {
+                        document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al sincronizar inventario</p>`;
+                    }
                 });
-        };
+        }
 
         function quitarSplashScreen() {
             const splash = document.getElementById('splash-screen');
@@ -525,9 +577,11 @@
             dotsContainer.innerHTML = dotsHtml;
             document.getElementById('contenedor-carrusel').classList.remove('hidden');
 
-            intervaloAutoSlide = setInterval(() => {
-                moverSlide(1);
-            }, 4000);
+            if (!intervaloAutoSlide) {
+                intervaloAutoSlide = setInterval(() => {
+                    moverSlide(1);
+                }, 4000);
+            }
         }
 
         function moverSlide(direccion) {
