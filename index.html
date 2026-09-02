@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Repuestos</title>
+    <title>Catálogo de Repuestos | GEO Motorcycle Colombia S.A.S.</title>
     
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM">
 
@@ -418,7 +418,9 @@
         let bannersGlobales = [];
         let linksPdfsGlobales = {};
         let hojaSeleccionada = 'General';
-        const URL_API = "https://script.google.com/macros/s/AKfycbz3q9-bhwsyxHiKOORF13a-rRf_KCgbcsoycA1BVzGK-OLAPYntbHDbVgonXM9OCigB/exec";
+        
+        // 🚀 URL Base del API de Apps Script
+        const URL_API_BASE = "https://script.google.com/macros/s/AKfycbz3q9-bhwsyxHiKOORF13a-rRf_KCgbcsoycA1BVzGK-OLAPYntbHDbVgonXM9OCigB/exec";
 
         let slideActual = 0;
         let totalSlides = 0;
@@ -447,18 +449,21 @@
                 quitarSplashScreen();
             }
 
-            // Validar de forma inteligente en segundo plano si Google Sheets cambió
+            // Sincronización inteligente anti-caché en segundo plano
             sincronizarDatos();
         };
 
         function sincronizarDatos() {
-            fetch(URL_API)
+            // Se añade ?_t= [tiempo actual] para romper la caché de red del navegador por completo
+            const urlConAntiCache = URL_API_BASE + "?_t=" + new Date().getTime();
+
+            fetch(urlConAntiCache)
                 .then(response => response.json())
                 .then(data => {
                     const versionRemota = data.version;
                     const versionLocal = localStorage.getItem('geo_version');
 
-                    // Si la versión cambió en Google Sheets, limpiamos la caché vieja y actualizamos
+                    // Si la versión en Sheets cambió, limpiamos la caché local de inmediato
                     if (versionRemota !== versionLocal) {
                         localStorage.clear();
                     }
@@ -467,7 +472,7 @@
                     bannersGlobales = data.banners || [];
                     linksPdfsGlobales = data.pdfs || {};
 
-                    // Guardar los nuevos datos y la nueva versión automática
+                    // Guardar los datos nuevos y la versión actualizada
                     localStorage.setItem('geo_version', versionRemota);
                     localStorage.setItem('geo_catalogo_datos', JSON.stringify(datosGlobales));
                     localStorage.setItem('geo_catalogo_banners', JSON.stringify(bannersGlobales));
