@@ -429,7 +429,7 @@
                 quitarSplashScreen();
             }, 2500);
 
-            // Carga inmediata desde Caché (localStorage)
+            // Carga rápida inicial desde la caché si existe
             const datosCache = localStorage.getItem('geo_catalogo_datos');
             const bannersCache = localStorage.getItem('geo_catalogo_banners');
             const pdfsCache = localStorage.getItem('geo_catalogo_pdfs');
@@ -447,7 +447,7 @@
                 quitarSplashScreen();
             }
 
-            // Sincronización en segundo plano desde Google Sheets
+            // Validar de forma inteligente en segundo plano si Google Sheets cambió
             sincronizarDatos();
         };
 
@@ -455,11 +455,20 @@
             fetch(URL_API)
                 .then(response => response.json())
                 .then(data => {
+                    const versionRemota = data.version;
+                    const versionLocal = localStorage.getItem('geo_version');
+
+                    // Si la versión cambió en Google Sheets, limpiamos la caché vieja y actualizamos
+                    if (versionRemota !== versionLocal) {
+                        localStorage.clear();
+                    }
+
                     datosGlobales = data.catalogos;
                     bannersGlobales = data.banners || [];
                     linksPdfsGlobales = data.pdfs || {};
 
-                    // Guardar en caché
+                    // Guardar los nuevos datos y la nueva versión automática
+                    localStorage.setItem('geo_version', versionRemota);
                     localStorage.setItem('geo_catalogo_datos', JSON.stringify(datosGlobales));
                     localStorage.setItem('geo_catalogo_banners', JSON.stringify(bannersGlobales));
                     localStorage.setItem('geo_catalogo_pdfs', JSON.stringify(linksPdfsGlobales));
