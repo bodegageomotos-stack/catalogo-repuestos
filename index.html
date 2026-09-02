@@ -418,7 +418,7 @@
         let bannersGlobales = [];
         let linksPdfsGlobales = {};
         let hojaSeleccionada = 'General';
-        const URL_API = "https://script.google.com/macros/s/AKfycbwlMe93_YQnT1yj-Ws94Fzd7kw6ZjBZnA9alVaBoDE0XpdmxgVQ73dhKzr96qaSwpaA/exec";
+        const URL_API = "https://script.google.com/macros/s/AKfycbz3q9-bhwsyxHiKOORF13a-rRf_KCgbcsoycA1BVzGK-OLAPYntbHDbVgonXM9OCigB/exec";
 
         let slideActual = 0;
         let totalSlides = 0;
@@ -429,7 +429,7 @@
                 quitarSplashScreen();
             }, 2500);
 
-            // Carga inmediata desde Caché
+            // Carga inmediata desde Caché (localStorage)
             const datosCache = localStorage.getItem('geo_catalogo_datos');
             const bannersCache = localStorage.getItem('geo_catalogo_banners');
             const pdfsCache = localStorage.getItem('geo_catalogo_pdfs');
@@ -447,6 +447,7 @@
                 quitarSplashScreen();
             }
 
+            // Sincronización en segundo plano desde Google Sheets
             sincronizarDatos();
         };
 
@@ -458,6 +459,7 @@
                     bannersGlobales = data.banners || [];
                     linksPdfsGlobales = data.pdfs || {};
 
+                    // Guardar en caché
                     localStorage.setItem('geo_catalogo_datos', JSON.stringify(datosGlobales));
                     localStorage.setItem('geo_catalogo_banners', JSON.stringify(bannersGlobales));
                     localStorage.setItem('geo_catalogo_pdfs', JSON.stringify(linksPdfsGlobales));
