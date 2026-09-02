@@ -419,7 +419,7 @@
         let linksPdfsGlobales = {};
         let hojaSeleccionada = 'General';
         
-        // 🚀 URL Base del API de Apps Script
+        // 🚀 URL Base del API de Apps Script con control dinámico estricto
         const URL_API_BASE = "https://script.google.com/macros/s/AKfycbz3q9-bhwsyxHiKOORF13a-rRf_KCgbcsoycA1BVzGK-OLAPYntbHDbVgonXM9OCigB/exec";
 
         let slideActual = 0;
@@ -427,71 +427,44 @@
         let intervaloAutoSlide;
 
         window.onload = function() {
-            setTimeout(() => {
-                quitarSplashScreen();
-            }, 2500);
+            // Limpiamos cualquier rastro previo de almacenamiento en caché para forzar aire fresco
+            localStorage.clear();
 
-            // Carga rápida inicial desde la caché si existe
-            const datosCache = localStorage.getItem('geo_catalogo_datos');
-            const bannersCache = localStorage.getItem('geo_catalogo_banners');
-            const pdfsCache = localStorage.getItem('geo_catalogo_pdfs');
-
-            if (datosCache && bannersCache) {
-                datosGlobales = JSON.parse(datosCache);
-                bannersGlobales = JSON.parse(bannersCache);
-                if(pdfsCache) {
-                    linksPdfsGlobales = JSON.parse(pdfsCache);
-                    actualizarEnlacesPdfs(linksPdfsGlobales);
-                }
-                
-                filtrarProductos();
-                renderizarCarrusel(bannersGlobales);
-                quitarSplashScreen();
-            }
-
-            // Sincronización inteligente anti-caché en segundo plano
-            sincronizarDatos();
+            // Carga directa obligatoria desde Google Sheets en tiempo real
+            cargarDatosDirectos();
         };
 
-        function sincronizarDatos() {
-            // Se añade ?_t= [tiempo actual] para romper la caché de red del navegador por completo
-            const urlConAntiCache = URL_API_BASE + "?_t=" + new Date().getTime();
+        function cargarDatosDirectos() {
+            // Añadimos un parámetro aleatorio gigante y cabeceras de no caché
+            const urlFresco = URL_API_BASE + "?nocache=" + Date.now() + Math.random();
 
-            fetch(urlConAntiCache)
-                .then(response => response.json())
-                .then(data => {
-                    const versionRemota = data.version;
-                    const versionLocal = localStorage.getItem('geo_version');
+            fetch(urlFresco, {
+                method: "GET",
+                cache: "no-store",
+                headers: {
+                    "Pragma": "no-cache",
+                    "Cache-Control": "no-cache, no-store, must-revalidate"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                datosGlobales = data.catalogos;
+                bannersGlobales = data.banners || [];
+                linksPdfsGlobales = data.pdfs || {};
 
-                    // Si la versión en Sheets cambió, limpiamos la caché local de inmediato
-                    if (versionRemota !== versionLocal) {
-                        localStorage.clear();
-                    }
+                actualizarEnlacesPdfs(linksPdfsGlobales);
+                filtrarProductos();
+                
+                if (bannersGlobales.length > 0) {
+                    renderizarCarrusel(bannersGlobales);
+                }
 
-                    datosGlobales = data.catalogos;
-                    bannersGlobales = data.banners || [];
-                    linksPdfsGlobales = data.pdfs || {};
-
-                    // Guardar los datos nuevos y la versión actualizada
-                    localStorage.setItem('geo_version', versionRemota);
-                    localStorage.setItem('geo_catalogo_datos', JSON.stringify(datosGlobales));
-                    localStorage.setItem('geo_catalogo_banners', JSON.stringify(bannersGlobales));
-                    localStorage.setItem('geo_catalogo_pdfs', JSON.stringify(linksPdfsGlobales));
-
-                    actualizarEnlacesPdfs(linksPdfsGlobales);
-                    filtrarProductos();
-                    if (bannersGlobales.length > 0 && document.getElementById('contenedor-carrusel').classList.contains('hidden')) {
-                        renderizarCarrusel(bannersGlobales);
-                    }
-
-                    quitarSplashScreen();
-                })
-                .catch(error => {
-                    quitarSplashScreen();
-                    if (!datosGlobales.General) {
-                        document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al sincronizar inventario</p>`;
-                    }
-                });
+                quitarSplashScreen();
+            })
+            .catch(error => {
+                quitarSplashScreen();
+                document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al sincronizar inventario en tiempo real</p>`;
+            });
         }
 
         function actualizarEnlacesPdfs(pdfs) {
