@@ -15,7 +15,7 @@
         
         body { background-color: #121212; color: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column; }
         
-        /* 🚀 Pantalla de Carga Optimizada: Fondo Limpio, Logo Grande y Moto Cruzando */
+        /* 🚀 Pantalla de Carga Optimizada */
         #splash-screen {
             position: fixed;
             inset: 0;
@@ -35,7 +35,6 @@
             visibility: hidden;
         }
 
-        /* Pista superior para la animación de izquierda a derecha constante */
         .moto-track {
             position: absolute;
             top: 10%;
@@ -173,12 +172,10 @@
         #contador-productos { font-size: 12px; color: #cbd5e1; font-weight: 500; }
         @media(min-width: 768px) { #contador-productos { font-size: 13px; } }
 
-        /* Botón de Sincronización Manual */
-        .sync-btn { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #f1f5f9; padding: 10px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
-        .sync-btn:hover { background: #dc2626; border-color: #ef4444; color: white; box-shadow: 0 0 10px rgba(220,38,38,0.4); }
-        .sync-btn svg { width: 15px; height: 15px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .syncing { animation: spin 1s linear infinite; }
+        /* Botón de Descargar PDFs */
+        .pdf-btn { background: rgba(220, 38, 38, 0.2); border: 1px solid rgba(220, 38, 38, 0.5); color: #f1f5f9; padding: 10px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+        .pdf-btn:hover { background: #dc2626; border-color: #ef4444; color: white; box-shadow: 0 0 12px rgba(220,38,38,0.5); }
+        .pdf-btn svg { width: 16px; height: 16px; }
 
         .search-box { width: 100%; position: relative; }
         @media(min-width: 768px) { .search-box { width: 340px; } }
@@ -264,13 +261,22 @@
         .modal-footer { padding: 12px 16px; border-top: 1px solid #2d2d2d; background: #1a1a1a; display: flex; justify-content: space-between; align-items: center; }
         .modal-price { font-size: 18px; font-weight: 800; color: #ef4444; }
 
+        /* Estilos específicos para el Modal de Descarga de PDFs */
+        .pdf-modal-container { max-width: 440px; width: 100%; background: #1e1e1e; border: 1px solid #2d2d2d; border-radius: 14px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
+        .pdf-list { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .pdf-item { display: flex; justify-content: space-between; align-items: center; background: #161616; border: 1px solid #2d2d2d; padding: 12px 16px; border-radius: 10px; transition: border-color 0.2s; gap: 10px; }
+        .pdf-item:hover { border-color: #dc2626; }
+        .pdf-title { font-size: 13px; font-weight: 600; color: #ffffff; }
+        .pdf-download-btn { background: #dc2626; color: white; border: none; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+        .pdf-download-btn:hover { background: #b91c1c; box-shadow: 0 0 10px rgba(220,38,38,0.5); }
+
         .hidden { display: none !important; }
         .text-center { text-align: center; }
     </style>
 </head>
 <body>
 
-    <!-- 🚀 Pantalla de Carga Optimizada: Fondo Limpio, Logo Grande y Moto Cruzando -->
+    <!-- 🚀 Pantalla de Carga Optimizada -->
     <div id="splash-screen">
         <div class="moto-track">
             <div class="moto-traveler">
@@ -307,9 +313,9 @@
             </div>
             
             <div class="header-right-group">
-                <button class="sync-btn" onclick="sincronizarDatos(true)" title="Actualizar datos desde Google Sheets">
-                    <svg id="sync-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                    <span>Actualizar</span>
+                <button class="pdf-btn" onclick="abrirModalPdfs()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span>Descargar PDF´s</span>
                 </button>
                 <div class="search-box">
                     <input type="text" id="input-buscador" placeholder="Buscar por código o descripción..." oninput="filtrarProductos()">
@@ -353,6 +359,7 @@
         </div>
     </main>
 
+    <!-- Modal Detalle de Producto -->
     <div id="modal-detalle" class="hidden modal-overlay" onclick="cerrarModal()">
         <div class="modal-container" onclick="event.stopPropagation()">
             <div class="modal-header">
@@ -374,6 +381,34 @@
         </div>
     </div>
 
+    <!-- Modal de Descarga de PDFs -->
+    <div id="modal-pdfs" class="hidden modal-overlay" onclick="cerrarModalPdfs()">
+        <div class="pdf-modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span>Descarga de Catálogos en PDF</span>
+                <button class="modal-close" onclick="cerrarModalPdfs()">✕</button>
+            </div>
+            <div class="pdf-list">
+                <div class="pdf-item">
+                    <span class="pdf-title">Catálogo General</span>
+                    <a id="btn-pdf-general" href="#" target="_blank" class="pdf-download-btn">Descargar</a>
+                </div>
+                <div class="pdf-item">
+                    <span class="pdf-title">Catálogo Bajaj</span>
+                    <a id="btn-pdf-bajaj" href="#" target="_blank" class="pdf-download-btn">Descargar</a>
+                </div>
+                <div class="pdf-item">
+                    <span class="pdf-title">Catálogo Harkes</span>
+                    <a id="btn-pdf-harkes" href="#" target="_blank" class="pdf-download-btn">Descargar</a>
+                </div>
+                <div class="pdf-item">
+                    <span class="pdf-title">Catálogo bujías y balineras</span>
+                    <a id="btn-pdf-bujias" href="#" target="_blank" class="pdf-download-btn">Descargar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer style="background: #1a1a1a; border-top: 1px solid #2d2d2d; padding: 12px; text-align: center; font-size: 11px; color: #64748b; margin-top: auto;">
         Catálogo Digital Operativo &bull; Actualizado desde Google Sheets
     </footer>
@@ -381,6 +416,7 @@
     <script>
         let datosGlobales = {};
         let bannersGlobales = [];
+        let linksPdfsGlobales = {};
         let hojaSeleccionada = 'General';
         const URL_API = "https://script.google.com/macros/s/AKfycbz3q9-bhwsyxHiKOORF13a-rRf_KCgbcsoycA1BVzGK-OLAPYntbHDbVgonXM9OCigB/exec";
 
@@ -389,63 +425,72 @@
         let intervaloAutoSlide;
 
         window.onload = function() {
-            // ⏱️ Temporizador para asegurar que la pantalla de carga luzca excelente al menos 2.5 segundos
             setTimeout(() => {
                 quitarSplashScreen();
             }, 2500);
 
-            // ⚡ CARGA INMEDIATA DESDE CACHÉ (LocalStorage)
+            // Carga inmediata desde Caché
             const datosCache = localStorage.getItem('geo_catalogo_datos');
             const bannersCache = localStorage.getItem('geo_catalogo_banners');
+            const pdfsCache = localStorage.getItem('geo_catalogo_pdfs');
 
             if (datosCache && bannersCache) {
                 datosGlobales = JSON.parse(datosCache);
                 bannersGlobales = JSON.parse(bannersCache);
+                if(pdfsCache) {
+                    linksPdfsGlobales = JSON.parse(pdfsCache);
+                    actualizarEnlacesPdfs(linksPdfsGlobales);
+                }
                 
                 filtrarProductos();
                 renderizarCarrusel(bannersGlobales);
                 quitarSplashScreen();
             }
 
-            // 🔄 Actualización en segundo plano desde Google Sheets
-            sincronizarDatos(false);
+            sincronizarDatos();
         };
 
-        function sincronizarDatos(forzarManual = false) {
-            const syncIcon = document.getElementById('sync-icon');
-            if (forzarManual) syncIcon.classList.add('syncing');
-
+        function sincronizarDatos() {
             fetch(URL_API)
                 .then(response => response.json())
                 .then(data => {
                     datosGlobales = data.catalogos;
                     bannersGlobales = data.banners || [];
+                    linksPdfsGlobales = data.pdfs || {};
 
-                    // Guardar en la caché del navegador
                     localStorage.setItem('geo_catalogo_datos', JSON.stringify(datosGlobales));
                     localStorage.setItem('geo_catalogo_banners', JSON.stringify(bannersGlobales));
+                    localStorage.setItem('geo_catalogo_pdfs', JSON.stringify(linksPdfsGlobales));
 
-                    // Refrescar la vista actual
+                    actualizarEnlacesPdfs(linksPdfsGlobales);
                     filtrarProductos();
                     if (bannersGlobales.length > 0 && document.getElementById('contenedor-carrusel').classList.contains('hidden')) {
                         renderizarCarrusel(bannersGlobales);
                     }
 
                     quitarSplashScreen();
-                    if (forzarManual) {
-                        setTimeout(() => syncIcon.classList.remove('syncing'), 800);
-                    }
                 })
                 .catch(error => {
-                    if (forzarManual) {
-                        syncIcon.classList.remove('syncing');
-                        alert("No se pudo conectar con Google Sheets. Se están mostrando los datos almacenados localmente.");
-                    }
                     quitarSplashScreen();
                     if (!datosGlobales.General) {
                         document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al sincronizar inventario</p>`;
                     }
                 });
+        }
+
+        function actualizarEnlacesPdfs(pdfs) {
+            if (pdfs.general) document.getElementById('btn-pdf-general').href = pdfs.general;
+            if (pdfs.bajaj) document.getElementById('btn-pdf-bajaj').href = pdfs.bajaj;
+            if (pdfs.harkes) document.getElementById('btn-pdf-harkes').href = pdfs.harkes;
+            if (pdfs.bujias) document.getElementById('btn-pdf-bujias').href = pdfs.bujias;
+        }
+
+        function abrirModalPdfs() {
+            document.getElementById('modal-pdfs').classList.remove('hidden');
+        }
+
+        function cerrarModalPdfs() {
+            document.getElementById('modal-pdfs').classList.add('hidden');
         }
 
         function quitarSplashScreen() {
