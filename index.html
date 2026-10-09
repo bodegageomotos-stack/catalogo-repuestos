@@ -172,7 +172,6 @@
         #contador-productos { font-size: 12px; color: #cbd5e1; font-weight: 500; }
         @media(min-width: 768px) { #contador-productos { font-size: 13px; } }
 
-        /* Botones de acción (PDF y Recargar) */
         .action-btn { background: rgba(220, 38, 38, 0.2); border: 1px solid rgba(220, 38, 38, 0.5); color: #f1f5f9; padding: 9px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
         .action-btn:hover { background: #dc2626; border-color: #ef4444; color: white; box-shadow: 0 0 12px rgba(220,38,38,0.5); }
         .action-btn svg { width: 15px; height: 15px; }
@@ -261,7 +260,6 @@
         .modal-footer { padding: 12px 16px; border-top: 1px solid #2d2d2d; background: #1a1a1a; display: flex; justify-content: space-between; align-items: center; }
         .modal-price { font-size: 18px; font-weight: 800; color: #ef4444; }
 
-        /* Estilos específicos para el Modal de Descarga de PDFs */
         .pdf-modal-container { max-width: 440px; width: 100%; background: #1e1e1e; border: 1px solid #2d2d2d; border-radius: 14px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
         .pdf-list { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
         .pdf-item { display: flex; justify-content: space-between; align-items: center; background: #161616; border: 1px solid #2d2d2d; padding: 12px 16px; border-radius: 10px; transition: border-color 0.2s; gap: 10px; }
@@ -276,7 +274,6 @@
 </head>
 <body>
 
-    <!-- 🚀 Pantalla de Carga Optimizada -->
     <div id="splash-screen">
         <div class="moto-track">
             <div class="moto-traveler">
@@ -286,16 +283,11 @@
 
         <div class="splash-content-box">
             <img src="https://lh3.googleusercontent.com/d/1WbcHmfQ645-U600d-aprLqrtBP13eVuM" alt="Logo Empresa" class="splash-logo">
-            
             <div style="text-align: center;">
                 <p style="color: #ffffff; font-weight: 800; font-size: 18px; margin-bottom: 6px; letter-spacing: 0.5px;">GEO Motorcycle Colombia S.A.S.</p>
                 <p class="splash-text">La ruta segura hacia la máxima rentabilidad y disponibilidad de repuestos.</p>
             </div>
-            
-            <div class="splash-progress-bar">
-                <div class="splash-progress-fill"></div>
-            </div>
-            
+            <div class="splash-progress-bar"><div class="splash-progress-fill"></div></div>
             <button class="splash-skip-btn" onclick="quitarSplashScreen()">Omitir Animación</button>
         </div>
     </div>
@@ -313,22 +305,17 @@
             </div>
             
             <div class="header-right-group">
-                <!-- Botón para recargar el archivo JSON estático al instante -->
                 <button class="action-btn" onclick="cargarCatalogoEstatico()" title="Actualizar catálogo">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                     <span>Actualizar</span>
                 </button>
-
                 <button class="action-btn" onclick="abrirModalPdfs()">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     <span>PDF´s</span>
                 </button>
-
                 <div class="search-box">
                     <input type="text" id="input-buscador" placeholder="Buscar por código o descripción..." oninput="filtrarProductos()">
-                    <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
+                    <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
             </div>
         </div>
@@ -353,7 +340,6 @@
 
         <div id="no-results" class="hidden text-center" style="padding: 40px 0;">
             <p style="font-size: 16px; font-weight: 600; color: #cbd5e1;">No se encontraron productos en esta sección</p>
-            <p style="font-size: 12px; color: #64748b; margin-top: 4px;">Intenta ajustando los términos de búsqueda.</p>
         </div>
 
         <div id="grid-productos" class="grid-productos">
@@ -366,7 +352,7 @@
         </div>
     </main>
 
-    <!-- Modal Detalle de Producto -->
+    <!-- Modal Detalle -->
     <div id="modal-detalle" class="hidden modal-overlay" onclick="cerrarModal()">
         <div class="modal-container" onclick="event.stopPropagation()">
             <div class="modal-header">
@@ -388,7 +374,7 @@
         </div>
     </div>
 
-    <!-- Modal de Descarga de PDFs -->
+    <!-- Modal PDFs -->
     <div id="modal-pdfs" class="hidden modal-overlay" onclick="cerrarModalPdfs()">
         <div class="pdf-modal-container" onclick="event.stopPropagation()">
             <div class="modal-header">
@@ -396,56 +382,29 @@
                 <button class="modal-close" onclick="cerrarModalPdfs()">✕</button>
             </div>
             <div class="pdf-list">
-                <div class="pdf-item">
-                    <span class="pdf-title">Catálogo General</span>
-                    <a id="btn-pdf-general" href="#" target="_blank" class="pdf-download-btn">Descargar</a>
-                </div>
-                <div class="pdf-item">
-                    <span class="pdf-title">Catálogo Bajaj</span>
-                    <a id="btn-pdf-bajaj" href="#" target="_blank" class="pdf-download-btn">Descargar</a>
-                </div>
-                <div class="pdf-item">
-                    <span class="pdf-title">Catálogo Harkes</span>
-                    <a id="btn-pdf-harkes" href="#" target="_blank" class="pdf-download-btn">Descargar</a>
-                </div>
-                <div class="pdf-item">
-                    <span class="pdf-title">Catálogo bujías y balineras</span>
-                    <a id="btn-pdf-bujias" href="#" target="_blank" class="pdf-download-btn">Descargar</a>
-                </div>
+                <div class="pdf-item"><span class="pdf-title">Catálogo General</span><a id="btn-pdf-general" href="#" target="_blank" class="pdf-download-btn">Descargar</a></div>
+                <div class="pdf-item"><span class="pdf-title">Catálogo Bajaj</span><a id="btn-pdf-bajaj" href="#" target="_blank" class="pdf-download-btn">Descargar</a></div>
+                <div class="pdf-item"><span class="pdf-title">Catálogo Harkes</span><a id="btn-pdf-harkes" href="#" target="_blank" class="pdf-download-btn">Descargar</a></div>
+                <div class="pdf-item"><span class="pdf-title">Catálogo bujías y balineras</span><a id="btn-pdf-bujias" href="#" target="_blank" class="pdf-download-btn">Descargar</a></div>
             </div>
         </div>
     </div>
-
-    <footer style="background: #1a1a1a; border-top: 1px solid #2d2d2d; padding: 12px; text-align: center; font-size: 11px; color: #64748b; margin-top: auto;">
-        Catálogo Digital Operativo &bull; Actualizado desde JSON Estático
-    </footer>
 
     <script>
         let datosGlobales = {};
         let bannersGlobales = [];
         let linksPdfsGlobales = {};
         let hojaSeleccionada = 'General';
-
-        let slideActual = 0;
-        let totalSlides = 0;
-        let intervaloAutoSlide;
+        let slideActual = 0, totalSlides = 0, intervaloAutoSlide;
 
         window.onload = function() {
-            setTimeout(() => {
-                quitarSplashScreen();
-            }, 1500);
-
-            // Carga instantánea del archivo estático JSON
+            setTimeout(() => { quitarSplashScreen(); }, 1500);
             cargarCatalogoEstatico();
         };
 
         function cargarCatalogoEstatico() {
-            // Añadimos un timestamp aleatorio para evitar que el navegador guarde en caché el JSON viejo
             fetch("catalogo.json?_t=" + Date.now())
-                .then(response => {
-                    if (!response.ok) throw new Error("No se pudo cargar el archivo catalogo.json");
-                    return response.json();
-                })
+                .then(res => { if (!res.ok) throw new Error(); return res.json(); })
                 .then(data => {
                     datosGlobales = data.catalogos;
                     bannersGlobales = data.banners || [];
@@ -457,12 +416,10 @@
                     if (bannersGlobales.length > 0 && document.getElementById('contenedor-carrusel').classList.contains('hidden')) {
                         renderizarCarrusel(bannersGlobales);
                     }
-
                     quitarSplashScreen();
-                })
-                .catch(error => {
+                }).catch(() => {
                     quitarSplashScreen();
-                    document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al cargar el archivo catalogo.json. Asegúrate de haberlo creado en el repositorio.</p>`;
+                    document.getElementById('grid-productos').innerHTML = `<p style="color: #ef4444; font-weight: 500; text-align: center; grid-column: span 5; padding: 40px;">Error al cargar el catalogo.json.</p>`;
                 });
         }
 
@@ -473,48 +430,36 @@
             if (pdfs.bujias) document.getElementById('btn-pdf-bujias').href = pdfs.bujias;
         }
 
-        function abrirModalPdfs() {
-            document.getElementById('modal-pdfs').classList.remove('hidden');
-        }
-
-        function cerrarModalPdfs() {
-            document.getElementById('modal-pdfs').classList.add('hidden');
-        }
-
+        function abrirModalPdfs() { document.getElementById('modal-pdfs').classList.remove('hidden'); }
+        function cerrarModalPdfs() { document.getElementById('modal-pdfs').classList.add('hidden'); }
         function quitarSplashScreen() {
             const splash = document.getElementById('splash-screen');
             if (splash && !splash.classList.contains('fade-out')) {
                 splash.classList.add('fade-out');
-                setTimeout(() => {
-                    splash.style.display = 'none';
-                }, 600);
+                setTimeout(() => { splash.style.display = 'none'; }, 600);
             }
         }
 
         function seleccionarHoja(hoja) {
             hojaSeleccionada = hoja;
             document.querySelectorAll('.filtro-btn').forEach(btn => {
-                if(btn.getAttribute('data-hoja') === hoja) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+                if(btn.getAttribute('data-hoja') === hoja) btn.classList.add('active');
+                else btn.classList.remove('active');
             });
             document.getElementById('input-buscador').value = '';
             filtrarProductos();
         }
 
         function filtrarProductos() {
-            const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
-            const palabrasBusqueda = textoBusqueda.split(/\s+/);
-            const listaHoja = datosGlobales[hojaSeleccionada] || [];
+            const texto = document.getElementById('input-buscador').value.toLowerCase().trim();
+            const palabras = texto.split(/\s+/);
+            const lista = datosGlobales[hojaSeleccionada] || [];
 
-            const filtrados = listaHoja.filter(item => {
-                if (textoBusqueda === "") return true;
-                const textoObjetivo = (item.codigo + " " + item.descripcion).toLowerCase();
-                return palabrasBusqueda.every(palabra => textoObjetivo.includes(palabra));
+            const filtrados = lista.filter(item => {
+                if (texto === "") return true;
+                const objetivo = (item.codigo + " " + item.descripcion).toLowerCase();
+                return palabras.every(p => objetivo.includes(p));
             });
-
             renderizarProductos(filtrados);
         }
 
@@ -528,12 +473,12 @@
                 noResults.classList.remove('hidden');
                 return;
             }
-
             noResults.classList.add('hidden');
             let html = '';
 
             productos.forEach((p, index) => {
-                let imagenHtml = p.imagen ? `<img src="${p.imagen}" alt="${p.codigo}" loading="lazy">` : `
+                // 🚀 Usa la miniatura ligera (=w300) para que vuele en datos móviles
+                let imgHtml = p.imagenMini ? `<img src="${p.imagenMini}" alt="${p.codigo}" loading="lazy">` : `
                     <div class="no-img">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         <span>Sin Imagen</span>
@@ -542,33 +487,24 @@
                 html += `
                     <div class="card" onclick="abrirModal(${index})">
                         <div>
-                            <div class="card-header">
-                                <span>${p.codigo}</span>
-                                <span class="card-badge">${p.marca}</span>
-                            </div>
-                            <div class="card-img-container">${imagenHtml}</div>
-                            <div class="card-body">
-                                <p class="card-desc" title="${p.descripcion}">${p.descripcion}</p>
-                            </div>
+                            <div class="card-header"><span>${p.codigo}</span><span class="card-badge">${p.marca}</span></div>
+                            <div class="card-img-container">${imgHtml}</div>
+                            <div class="card-body"><p class="card-desc" title="${p.descripcion}">${p.descripcion}</p></div>
                         </div>
-                        <div class="card-footer">
-                            <span class="price-label">Precio</span>
-                            <span class="price-value">${p.precio}</span>
-                        </div>
+                        <div class="card-footer"><span class="price-label">Precio</span><span class="price-value">${p.precio}</span></div>
                     </div>`;
             });
             grid.innerHTML = html;
         }
 
         function abrirModal(index) {
-            const textoBusqueda = document.getElementById('input-buscador').value.toLowerCase().trim();
-            const palabrasBusqueda = textoBusqueda.split(/\s+/);
-            const listaHoja = datosGlobales[hojaSeleccionada] || [];
-
-            const filtrados = listaHoja.filter(item => {
-                if (textoBusqueda === "") return true;
-                const textoObjetivo = (item.codigo + " " + item.descripcion).toLowerCase();
-                return palabrasBusqueda.every(palabra => textoObjetivo.includes(palabra));
+            const texto = document.getElementById('input-buscador').value.toLowerCase().trim();
+            const palabras = texto.split(/\s+/);
+            const lista = datosGlobales[hojaSeleccionada] || [];
+            const filtrados = lista.filter(item => {
+                if (texto === "") return true;
+                const objetivo = (item.codigo + " " + item.descripcion).toLowerCase();
+                return palabras.every(p => objetivo.includes(p));
             });
 
             const p = filtrados[index];
@@ -579,65 +515,43 @@
             document.getElementById('modal-descripcion').innerText = p.descripcion;
             document.getElementById('modal-precio').innerText = p.precio;
 
-            const imgContainer = document.getElementById('modal-img-container');
-            imgContainer.innerHTML = p.imagen ? `<img src="${p.imagen}" alt="${p.codigo}">` : `
-                <div class="no-img" style="font-size: 12px; background: #161616; color: #64748b;">
+            // 🔍 En el modal muestra la foto en su resolución original y alta calidad
+            const imgUrl = p.imagenOriginal || p.imagenMini;
+            document.getElementById('modal-img-container').innerHTML = imgUrl ? `<img src="${imgUrl}" alt="${p.codigo}">` : `
+                <div class="no-img" style="font-size: 12px; color: #64748b;">
                     <svg style="width: 40px; height: 40px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     <span>Sin Imagen Disponible</span>
                 </div>`;
-
             document.getElementById('modal-detalle').classList.remove('hidden');
         }
 
-        function cerrarModal() {
-            document.getElementById('modal-detalle').classList.add('hidden');
-        }
+        function cerrarModal() { document.getElementById('modal-detalle').classList.add('hidden'); }
 
         function renderizarCarrusel(banners) {
             const track = document.getElementById('carousel-track');
             const dotsContainer = document.getElementById('carousel-dots');
             totalSlides = banners.length;
-
-            let trackHtml = '';
-            let dotsHtml = '';
-
-            banners.forEach((url, i) => {
-                trackHtml += `<div class="carousel-slide"><img src="${url}" alt="Banner ${i+1}"></div>`;
-                dotsHtml += `<div class="carousel-dot ${i === 0 ? 'active' : ''}" onclick="irASlide(${i})"></div>`;
+            let tHtml = '', dHtml = '';
+            
+            banners.forEach((bannerObj, i) => {
+                // Soporta tanto si el banner es un objeto nuevo o un string antiguo
+                let urlImg = (typeof bannerObj === 'object') ? bannerObj.mini : bannerObj;
+                tHtml += `<div class="carousel-slide"><img src="${urlImg}" alt="Banner"></div>`;
+                dHtml += `<div class="carousel-dot ${i === 0 ? 'active' : ''}" onclick="irASlide(${i})"></div>`;
             });
-
-            track.innerHTML = trackHtml;
-            dotsContainer.innerHTML = dotsHtml;
+            track.innerHTML = tHtml;
+            dotsContainer.innerHTML = dHtml;
             document.getElementById('contenedor-carrusel').classList.remove('hidden');
-
             if (!intervaloAutoSlide) {
-                intervaloAutoSlide = setInterval(() => {
-                    moverSlide(1);
-                }, 4000);
+                intervaloAutoSlide = setInterval(() => { moverSlide(1); }, 4000);
             }
         }
-
-        function moverSlide(direccion) {
-            slideActual = (slideActual + direccion + totalSlides) % totalSlides;
-            actualizarCarrusel();
-        }
-
-        function irASlide(index) {
-            slideActual = index;
-            actualizarCarrusel();
-        }
-
-        function actualizarCarrusel() {
-            const track = document.getElementById('carousel-track');
-            track.style.transform = `translateX(-${slideActual * 100}%)`;
-
-            const dots = document.querySelectorAll('.carousel-dot');
-            dots.forEach((dot, i) => {
-                if (i === slideActual) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+        function moverSlide(d) { slideActual = (slideActual + d + totalSlides) % totalSlides; actCarrusel(); }
+        function irASlide(i) { slideActual = i; actCarrusel(); }
+        function actCarrusel() {
+            document.getElementById('carousel-track').style.transform = `translateX(-${slideActual * 100}%)`;
+            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                if (i === slideActual) dot.classList.add('active'); else dot.classList.remove('active');
             });
         }
     </script>
