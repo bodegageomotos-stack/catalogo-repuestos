@@ -529,7 +529,7 @@
             const track = document.getElementById('carousel-track');
             const dotsContainer = document.getElementById('carousel-dots');
             totalSlides = banners.length;
-            let tHtml = '', dHtml = '';
+            let tHtml = '', dHtml = {};
             
             banners.forEach((url, i) => {
                 tHtml += `<div class="carousel-slide"><img src="${url}" alt="Banner"></div>`;
