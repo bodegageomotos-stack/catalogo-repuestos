@@ -660,13 +660,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1zyvKj0KgdOkYD5rLOSPZZZ3tu5CBM-NA=w300"
       },
       {
-        "codigo": "Rep908",
-        "descripcion": "BATERIA GEL PANTHER YTZ6V-BS NMAX",
-        "marca": "Panther",
-        "precio": "$62.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1zXLjcprN2ovsDHtUSvwcFYHfHzEGpkee=w300"
-      },
-      {
         "codigo": "REP1058",
         "descripcion": "BOBINA DE ALTA AKT NKD KCC",
         "marca": "Kcc",
@@ -3453,13 +3446,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1Bo48gmyvqo-BYgpVODhfFimLGppQtS69=w300"
       },
       {
-        "codigo": "PTR183",
-        "descripcion": "FLASHER 12 V UNIVERSAL NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$2.500",
-        "imagen": "https://lh3.googleusercontent.com/d/12txLwE_CrAAwCaUJ1YTOJpT9mw5mtqSv=w300"
-      },
-      {
         "codigo": "REP1122",
         "descripcion": "FRENO DISCO AGILITY 125 DEL KCC",
         "marca": "Kcc",
@@ -6037,7 +6023,7 @@
       },
       {
         "codigo": "GEO312",
-        "descripcion": "LLANTA PANTHER 450-12 TT",
+        "descripcion": "LLANTA PANTHER 450-12 TL",
         "marca": "Panther",
         "precio": "$94.000",
         "imagen": "https://lh3.googleusercontent.com/d/1HK0a64k82gLZXHrAToWsv_d_ejw-P65H=w300"
@@ -6300,13 +6286,6 @@
         "marca": "North Panthr",
         "precio": "$12.000",
         "imagen": "https://lh3.googleusercontent.com/d/1TSb0j-WbLCC08sQ3CzAahEXS4S2Bhz6C=w300"
-      },
-      {
-        "codigo": "PTR563",
-        "descripcion": "MANGUERA GASOLINA UNIVERSAL NEGRA NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$10.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1heN7MjOsZ-x_tCCV5IcdPuAY2qC_Y4NH=w300"
       },
       {
         "codigo": "PTR640",
@@ -6925,13 +6904,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1nMJoG23AhqJajfnHz8azVLkMCUbOsHEj=w300"
       },
       {
-        "codigo": "Rep436",
-        "descripcion": "NEUMATICO PANTHER 410-17",
-        "marca": "Panther",
-        "precio": "$11.500",
-        "imagen": "https://lh3.googleusercontent.com/d/1vFVYbo8q6fo8t-NZjvC4mjlflcX7LSTC=w300"
-      },
-      {
         "codigo": "Rep434",
         "descripcion": "NEUMATICO PANTHER 410-18",
         "marca": "Panther",
@@ -7091,13 +7063,6 @@
         "marca": "North Panthr",
         "precio": "$4.200",
         "imagen": "https://lh3.googleusercontent.com/d/1Nx4y3dKMm9CbLOFqieXfMEs7kBUr8vCh=w300"
-      },
-      {
-        "codigo": "REP1127",
-        "descripcion": "PASTILLAS DE FRENO XTZ-150 TIPO ORIGINAL KCC",
-        "marca": "Kcc",
-        "precio": "$4.500",
-        "imagen": "https://lh3.googleusercontent.com/d/1-AfpPv57nL9udJdyYjcsSqVhLTOkvPm2=w300"
       },
       {
         "codigo": "REP1126",
@@ -8594,14 +8559,14 @@
         "codigo": "PTR1086-G",
         "descripcion": "RIN DE ASPA ECO DELANTERO NORTH PANTHER",
         "marca": "Panther",
-        "precio": "$260.000",
+        "precio": "$230.000",
         "imagen": "https://lh3.googleusercontent.com/d/1UlT-zLneCE2SHUxJgvpxgmWUkDTytt0A=w300"
       },
       {
         "codigo": "PTR1087-G",
         "descripcion": "RIN DE ASPA ECO TRASERO NORTH PANTHER",
         "marca": "Panther",
-        "precio": "$240.000",
+        "precio": "$215.000",
         "imagen": "https://lh3.googleusercontent.com/d/1CuEGRbrOpUl5JPgJNMB3zNQiBXdmCCSz=w300"
       },
       {
@@ -8701,13 +8666,6 @@
         "marca": "Panther",
         "precio": "$48.900",
         "imagen": "https://lh3.googleusercontent.com/d/1F2idOdNWNJUZzmV2atJJNrkiLnl1xw2H=w300"
-      },
-      {
-        "codigo": "PTR848",
-        "descripcion": "RIN DE HIERRO 160X17BOXER CT 100 (COMPLETO DELANTERO) NORTH PANTHER",
-        "marca": "Panther",
-        "precio": "$129.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1p0hUKwdGccCqXV2JxHftN2GhvYeWQGqO=w300"
       },
       {
         "codigo": "PTR085",
@@ -10525,13 +10483,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1hx6PdDuOy-bdNILGlYiqeIEG4Xd-vNFg=w300"
       },
       {
-        "codigo": "PA551002",
-        "descripcion": "EJE DE CLUTCH BOXER CT 102/ ORIGINAL BAJAJ",
-        "marca": "Bajaj",
-        "precio": "$18.700",
-        "imagen": "https://lh3.googleusercontent.com/d/1KHhGdbhZCihDjRBJ1zM_yCHBjipIrW5d=w300"
-      },
-      {
         "codigo": "JD621001",
         "descripcion": "EJE DE CRANCK PULSAR 135 ORIGINAL BAJAJ",
         "marca": "Bajaj",
@@ -10959,13 +10910,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1bBuIgEnktjke6ZaawmRucwhEWC77Dz5v=w300"
       },
       {
-        "codigo": "JG161008",
-        "descripcion": "MANIGUETA CLUTCH PULSAR 200 NS ORIGINAL BAJAJ",
-        "marca": "Bajaj",
-        "precio": "$13.500",
-        "imagen": "https://lh3.googleusercontent.com/d/1A9z_LI8EAmXk37mpTtxvBdMTfvyA-UWj=w300"
-      },
-      {
         "codigo": "36DK0038",
         "descripcion": "MANZANA CLUTCH PULSAR 180 UG ORIGINAL BAJAJ",
         "marca": "Bajaj",
@@ -11300,13 +11244,6 @@
         "marca": "Bajaj",
         "precio": "$48.500",
         "imagen": "https://lh3.googleusercontent.com/d/1qR2VvnVgCKrXx8lfbDnbzA_BgFvEtxdP=w300"
-      },
-      {
-        "codigo": "DF181085",
-        "descripcion": "TAPON SUPERIOR BARRAS BOXER CT PLATINO 125 ORIGINAL BAJAJ",
-        "marca": "Bajaj",
-        "precio": "$5.300",
-        "imagen": "https://lh3.googleusercontent.com/d/1EChmYJoNAaxyJOdqhFiaIqHWAaaUodQp=w300"
       },
       {
         "codigo": "36DU1901",
