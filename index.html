@@ -260,14 +260,6 @@
         .modal-footer { padding: 12px 16px; border-top: 1px solid #2d2d2d; background: #1a1a1a; display: flex; justify-content: space-between; align-items: center; }
         .modal-price { font-size: 18px; font-weight: 800; color: #ef4444; }
 
-        .pdf-modal-container { max-width: 440px; width: 100%; background: #1e1e1e; border: 1px solid #2d2d2d; border-radius: 14px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
-        .pdf-list { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-        .pdf-item { display: flex; justify-content: space-between; align-items: center; background: #161616; border: 1px solid #2d2d2d; padding: 12px 16px; border-radius: 10px; transition: border-color 0.2s; gap: 10px; }
-        .pdf-item:hover { border-color: #dc2626; }
-        .pdf-title { font-size: 13px; font-weight: 600; color: #ffffff; }
-        .pdf-download-btn { background: #dc2626; color: white; border: none; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
-        .pdf-download-btn:hover { background: #b91c1c; box-shadow: 0 0 10px rgba(220,38,38,0.5); }
-
         .hidden { display: none !important; }
         .text-center { text-align: center; }
     </style>
@@ -309,10 +301,6 @@
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                     <span>Actualizar</span>
                 </button>
-                <button class="action-btn" onclick="abrirModalPdfs()">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    <span>PDF´s</span>
-                </button>
                 <div class="search-box">
                     <input type="text" id="input-buscador" placeholder="Buscar por código o descripción..." oninput="filtrarProductos()">
                     <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -325,7 +313,7 @@
                 <button onclick="seleccionarHoja('General')" class="filtro-btn active" data-hoja="General">General</button>
                 <button onclick="seleccionarHoja('Bajaj')" class="filtro-btn" data-hoja="Bajaj">Bajaj</button>
                 <button onclick="seleccionarHoja('Harkes')" class="filtro-btn" data-hoja="Harkes">Harkes</button>
-                <button onclick="seleccionarHoja('Varios')" class="filtro-btn" data-hoja="Varios">Varios</button>
+                <button onclick="seleccionarHoja('Llantas')" class="filtro-btn" data-hoja="Llantas">Llantas</button>
             </div>
         </div>
     </header>
@@ -374,26 +362,9 @@
         </div>
     </div>
 
-    <!-- Modal PDFs -->
-    <div id="modal-pdfs" class="hidden modal-overlay" onclick="cerrarModalPdfs()">
-        <div class="pdf-modal-container" onclick="event.stopPropagation()">
-            <div class="modal-header">
-                <span>Descarga de Catálogos en PDF</span>
-                <button class="modal-close" onclick="cerrarModalPdfs()">✕</button>
-            </div>
-            <div class="pdf-list">
-                <div class="pdf-item"><span class="pdf-title">Catálogo General</span><a id="btn-pdf-general" href="#" target="_blank" class="pdf-download-btn">Descargar</a></div>
-                <div class="pdf-item"><span class="pdf-title">Catálogo Bajaj</span><a id="btn-pdf-bajaj" href="#" target="_blank" class="pdf-download-btn">Descargar</a></div>
-                <div class="pdf-item"><span class="pdf-title">Catálogo Harkes</span><a id="btn-pdf-harkes" href="#" target="_blank" class="pdf-download-btn">Descargar</a></div>
-                <div class="pdf-item"><span class="pdf-title">Catálogo bujías y balineras</span><a id="btn-pdf-bujias" href="#" target="_blank" class="pdf-download-btn">Descargar</a></div>
-            </div>
-        </div>
-    </div>
-
     <script>
         let datosGlobales = {};
         let bannersGlobales = [];
-        let linksPdfsGlobales = {};
         let hojaSeleccionada = 'General';
         let slideActual = 0, totalSlides = 0, intervaloAutoSlide;
 
@@ -408,9 +379,7 @@
                 .then(data => {
                     datosGlobales = data.catalogos;
                     bannersGlobales = data.banners || [];
-                    linksPdfsGlobales = data.pdfs || {};
 
-                    actualizarEnlacesPdfs(linksPdfsGlobales);
                     filtrarProductos();
                     
                     if (bannersGlobales.length > 0 && document.getElementById('contenedor-carrusel').classList.contains('hidden')) {
@@ -423,15 +392,6 @@
                 });
         }
 
-        function actualizarEnlacesPdfs(pdfs) {
-            if (pdfs.general) document.getElementById('btn-pdf-general').href = pdfs.general;
-            if (pdfs.bajaj) document.getElementById('btn-pdf-bajaj').href = pdfs.bajaj;
-            if (pdfs.harkes) document.getElementById('btn-pdf-harkes').href = pdfs.harkes;
-            if (pdfs.bujias) document.getElementById('btn-pdf-bujias').href = pdfs.bujias;
-        }
-
-        function abrirModalPdfs() { document.getElementById('modal-pdfs').classList.remove('hidden'); }
-        function cerrarModalPdfs() { document.getElementById('modal-pdfs').classList.add('hidden'); }
         function quitarSplashScreen() {
             const splash = document.getElementById('splash-screen');
             if (splash && !splash.classList.contains('fade-out')) {
@@ -530,7 +490,7 @@
             const dotsContainer = document.getElementById('carousel-dots');
             totalSlides = banners.length;
             let tHtml = '';
-            let dHtml = ''; // Corregido estrictamente como cadena vacía
+            let dHtml = '';
             
             banners.forEach((url, i) => {
                 tHtml += `<div class="carousel-slide"><img src="${url}" alt="Banner"></div>`;
