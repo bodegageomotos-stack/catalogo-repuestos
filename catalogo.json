@@ -1738,6 +1738,13 @@
         "imagen": "https://lh3.googleusercontent.com/d/1pmNDyxosK9gmtSeql_JDyTp5qIPnN9yC=w300"
       },
       {
+        "codigo": "REP1140",
+        "descripcion": "CADENA 520H-120 ORING (DORADA)  NORTH PANTHER",
+        "marca": "Panther",
+        "precio": "$70.000",
+        "imagen": "https://lh3.googleusercontent.com/d/1FnS9AJg8GAnl3x-bYyApwLixfGwa1GEz=w300"
+      },
+      {
         "codigo": "PTR846-O",
         "descripcion": "CADENILLA AX4 NORTH PANTHR",
         "marca": "North Panthr",
@@ -6860,13 +6867,6 @@
         "marca": "Panther",
         "precio": "$9.000",
         "imagen": "https://lh3.googleusercontent.com/d/1hAzyMSBIq0Ow_2NmNMoBQOEJbDETHTbo=w300"
-      },
-      {
-        "codigo": "Rep440",
-        "descripcion": "NEUMATICO PANTHER 275-300-17",
-        "marca": "Panther",
-        "precio": "$9.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1au0f23YLPx-iv9qcthzPcrtO4Pu1ME4m=w300"
       },
       {
         "codigo": "Rep437",
