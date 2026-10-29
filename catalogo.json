@@ -2970,13 +2970,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1gCX_BLlTraeUUKGaGm6rq7PAYKJdD-lN=w300"
       },
       {
-        "codigo": "PTR571",
-        "descripcion": "FAROLA BOXER CT COMPLETA NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$72.800",
-        "imagen": "https://lh3.googleusercontent.com/d/1F9-FyZlDYEs9clpxHmG_pqAmSpNjEncw=w300"
-      },
-      {
         "codigo": "PTR575",
         "descripcion": "FAROLA BOXER CT NORTH PANTHR",
         "marca": "North Panthr",
@@ -3794,20 +3787,6 @@
         "marca": "North Panthr",
         "precio": "$6.800",
         "imagen": "https://lh3.googleusercontent.com/d/1J5BnOpa8zr5VFhFSynvvv1yNRN_ZSp7_=w300"
-      },
-      {
-        "codigo": "PTR716",
-        "descripcion": "GATO LATERAL CB 110 NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$6.800",
-        "imagen": "https://lh3.googleusercontent.com/d/1cR_CBtXNW2TtIed0gPu8nsThzgQQ-TGD=w300"
-      },
-      {
-        "codigo": "PTR712",
-        "descripcion": "GATO LATERAL DR 150 NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$10.400",
-        "imagen": "https://lh3.googleusercontent.com/d/1smebKStOGwxo9xgl5jD07zj2-XZzGrkR=w300"
       },
       {
         "codigo": "PTR714",
@@ -5005,13 +4984,6 @@
         "marca": "North Panthr",
         "precio": "$7.800",
         "imagen": "https://lh3.googleusercontent.com/d/17sNtrPUdF5MFAi7239y8prbtlJZdm81X=w300"
-      },
-      {
-        "codigo": "REP905",
-        "descripcion": "KIT DISCOS DE CLUTCH PULSAR 135 KCC",
-        "marca": "Kcc",
-        "precio": "$9.400",
-        "imagen": "https://lh3.googleusercontent.com/d/1DIdyEUkD-bm_hpmkQZ8TTb1vEbWKTbv-=w300"
       },
       {
         "codigo": "Rep357",
@@ -8199,13 +8171,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1-e0zC2BCR2BmYRJoOBgU6XzWUydnbGwd=w300"
       },
       {
-        "codigo": "PTR962-G",
-        "descripcion": "RELAY DE ARRANQUE ECO DELUXE NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$8.350",
-        "imagen": "https://lh3.googleusercontent.com/d/1vog4l0WeT_yxzsie0ODHdsTI8M32wsPZ=w300"
-      },
-      {
         "codigo": "Rep339",
         "descripcion": "RELAY DE ARRANQUE GNH 125 KCC",
         "marca": "Kcc",
@@ -8610,13 +8575,6 @@
         "marca": "Panther",
         "precio": "$40.600",
         "imagen": "https://lh3.googleusercontent.com/d/1GGOYhRabKFmmUdz_W-zjLr6J8WLRJA1r=w300"
-      },
-      {
-        "codigo": "PTR035",
-        "descripcion": "RIN DE HIERRO 160X18 AKT-NKD (NEGRO COMPLETO TRASERO) NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$155.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1ttyAlTjNO_64hfw-MXfcAYkjzfMzzGDX=w300"
       },
       {
         "codigo": "Rep429",
