@@ -65,13 +65,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1ezg9aIH0umC82xOqNjyhtLNDDSWm1gEe=w300"
       },
       {
-        "codigo": "LUB11",
-        "descripcion": "ACEITE MOTUL 5000 20W50 4T LITRO X12",
-        "marca": "Motul",
-        "precio": "$376.100",
-        "imagen": "https://lh3.googleusercontent.com/d/1TyKvmx_VYF3z5RvoJW63gXIJhFbX9rj4=w300"
-      },
-      {
         "codigo": "LUB12",
         "descripcion": "ACEITE MOTUL 5100 15W50 4T LITRO X12",
         "marca": "Motul",
@@ -119,20 +112,6 @@
         "marca": "Kcc",
         "precio": "$83.200",
         "imagen": "https://lh3.googleusercontent.com/d/1NJAXwqBjgoj2sGSuk2g-NTF6dYWFpY9S=w300"
-      },
-      {
-        "codigo": "Rep001",
-        "descripcion": "AMORTIGUADORES BOXER CT 100 X2 KCC",
-        "marca": "Kcc",
-        "precio": "$69.700",
-        "imagen": "https://lh3.googleusercontent.com/d/1DY_C-Zj-Osd0nqPfxiRiiqv_PQdtKOHl=w300"
-      },
-      {
-        "codigo": "Rep001",
-        "descripcion": "AMORTIGUADORES BOXER CT 100 X2 KCC",
-        "marca": "Kcc",
-        "precio": "$69.700",
-        "imagen": "https://lh3.googleusercontent.com/d/1DY_C-Zj-Osd0nqPfxiRiiqv_PQdtKOHl=w300"
       },
       {
         "codigo": "REP1160",
@@ -219,13 +198,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1SztZCJNb609T5SqPPdK7EKKj0xDzqguH=w300"
       },
       {
-        "codigo": "PTR1108-G",
-        "descripcion": "ARANDELA PIÑON SALIDA AKT NKD 125 (PAQ X 10 UND) NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$24.000",
-        "imagen": "https://lh3.googleusercontent.com/d/15SGaFLr5FnYMytajNYJznAdRrAwnIFRV=w300"
-      },
-      {
         "codigo": "PTR209",
         "descripcion": "ARBOL DE LEVAS AKT 125/150 NORTH PANTHR",
         "marca": "North Panthr",
@@ -301,13 +273,6 @@
         "marca": "North Panthr",
         "precio": "$29.000",
         "imagen": "https://lh3.googleusercontent.com/d/1JvUHuH0l8WEwJZPrnfIPUcGPOoupU2P7=w300"
-      },
-      {
-        "codigo": "REP1161",
-        "descripcion": "ARBOL DE LEVAS GN 125/GS 125 KCC",
-        "marca": "Kcc",
-        "precio": "$23.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1ZhNgbHSW2BQWIa_SJkXhryJhRi0JdF6q=w300"
       },
       {
         "codigo": "PTR1030-G",
@@ -618,13 +583,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1L0E5HKX9ei7UbDkNjFX17PiZXrBOxd6H=w300"
       },
       {
-        "codigo": "Rep055",
-        "descripcion": "BATERIA GEL PANTHER 12N9-BS PULSAR 180",
-        "marca": "Panther",
-        "precio": "$58.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1a_HVS_4w21Ena13LeD4AL0xfwCtscAKs=w300"
-      },
-      {
         "codigo": "Rep1173",
         "descripcion": "BATERIA GEL PANTHER BTZ6S-BS NMAX V2 CONETED CONNECTED 155",
         "marca": "Panther",
@@ -658,13 +616,6 @@
         "marca": "Panther",
         "precio": "$59.000",
         "imagen": "https://lh3.googleusercontent.com/d/1f_SmjRd6tOPCyAu7DI2TLuTCjEdrCR8G=w300"
-      },
-      {
-        "codigo": "Rep052",
-        "descripcion": "BATERIA GEL PANTHER YTX7L-BS TTR 150-180",
-        "marca": "Panther",
-        "precio": "$57.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1AQ8U_ope_FeOEA9LQ8wFMIY322e_ZEM4=w300"
       },
       {
         "codigo": "Rep062",
@@ -3521,13 +3472,6 @@
         "marca": "Kcc",
         "precio": "$36.400",
         "imagen": "https://lh3.googleusercontent.com/d/1Vw-S4K5Jwz__3RWesOwk4mSmSivpPeiT=w300"
-      },
-      {
-        "codigo": "REP1068",
-        "descripcion": "FRENO DISCO CRYPTON 115 DEL KCC",
-        "marca": "Kcc",
-        "precio": "$32.250",
-        "imagen": "https://lh3.googleusercontent.com/d/1ZqPHGQELoPSqeD8mOtDpXMUl2CbZ_DEO=w300"
       },
       {
         "codigo": "PTR677",
