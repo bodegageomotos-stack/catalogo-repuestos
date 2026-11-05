@@ -492,13 +492,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/11yONUdPL2T3tDm3w5iF9f6aA5ADWT1UC=w300"
       },
       {
-        "codigo": "REP1084",
-        "descripcion": "BARRAS FZ 16 DELANTERAS KCC",
-        "marca": "Kcc",
-        "precio": "$291.200",
-        "imagen": "https://lh3.googleusercontent.com/d/1t1WdCuIz8hD54yqPYa8Uq0UDTjlP7AMB=w300"
-      },
-      {
         "codigo": "REP1093",
         "descripcion": "BARRAS GN 125 DELANTERAS KCC",
         "marca": "Kcc",
@@ -1850,13 +1843,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1529H16V25L5EyutGSjeXxoGCiedziIfB=w300"
       },
       {
-        "codigo": "PTR974-O",
-        "descripcion": "CAMPANA BOXER CT 100 DELANTERA NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$51.000",
-        "imagen": "https://lh3.googleusercontent.com/d/12VIPBfbHFNJWPhxc51POPUy92Qfzj614=w300"
-      },
-      {
         "codigo": "Rep165",
         "descripcion": "CAMPANA BOXER CT 100 TRASERA KCC",
         "marca": "Kcc",
@@ -2879,13 +2865,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1qfr7_oRidjPsHOj8XiM2l_6b15CWYoJa=w300"
       },
       {
-        "codigo": "PTR619",
-        "descripcion": "EJE PULSAR 180 UG TRASERO (PAQ X 5 UND )NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$7.300",
-        "imagen": "https://lh3.googleusercontent.com/d/1PQqGPz71tDcSOlqDbpVHzSPhlpHXVIwt=w300"
-      },
-      {
         "codigo": "PTR1051-G",
         "descripcion": "EJE XR 150 DELANTERO NORTH PANTHR",
         "marca": "North Panthr",
@@ -3115,13 +3094,6 @@
         "marca": "North Panthr",
         "precio": "$7.300",
         "imagen": "https://lh3.googleusercontent.com/d/1KWWpaMp0y5duNyLYMR-HhZbMl5lPHAia=w300"
-      },
-      {
-        "codigo": "PTR530",
-        "descripcion": "FILTRO DE AIRE CRYPTON 115 FI NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$8.350",
-        "imagen": "https://lh3.googleusercontent.com/d/1KnY-LCUrrBsCe0GvSLRcdCptO8pnxD-O=w300"
       },
       {
         "codigo": "PTR534",
@@ -8157,13 +8129,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1kolvpuD_FgiRE5KvTOlIG3fI_QufRsOY=w300"
       },
       {
-        "codigo": "PTR966-G",
-        "descripcion": "REPOSAPIE ECO DELUXE TRASERO NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$6.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1xThp_TWDFp-pcFtBziTyW_59Dty3_us-=w300"
-      },
-      {
         "codigo": "PTR710",
         "descripcion": "REPOSAPIE FZ16 TRASERO NORTH PANTHR",
         "marca": "North Panthr",
@@ -8442,13 +8407,6 @@
         "marca": "Panther",
         "precio": "$46.000",
         "imagen": "https://lh3.googleusercontent.com/d/1NRPD_UIBQeqT1GqXHkwE0mqStXuWM18L=w300"
-      },
-      {
-        "codigo": "Rep426",
-        "descripcion": "RIN DE HIERRO 160X17 KCC",
-        "marca": "Kcc",
-        "precio": "$45.800",
-        "imagen": "https://lh3.googleusercontent.com/d/1Su7HqIfyMDYhS1_blZNcoAnkbcvckZvQ=w300"
       },
       {
         "codigo": "PTR077",
@@ -10782,13 +10740,6 @@
         "marca": "Bajaj",
         "precio": "$3.800",
         "imagen": "https://lh3.googleusercontent.com/d/1xZLa3X1EJnNwg_RZjB9S6_PXAnKy-y96=w300"
-      },
-      {
-        "codigo": "JL122001",
-        "descripcion": "TENSOR DE CADENA IZQUIERDO PULSAR 200 NS ORIGINAL BAJAJ",
-        "marca": "Bajaj",
-        "precio": "$6.000",
-        "imagen": "https://lh3.googleusercontent.com/d/1yYHrh4QWUxihpHD8VCK25_AxXYYPN5yP=w300"
       },
       {
         "codigo": "JP351439",
