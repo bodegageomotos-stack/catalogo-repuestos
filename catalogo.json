@@ -310,125 +310,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1fdgfVe2CoiIQQqp3Kq888I2io1rSayyR=w300"
       },
       {
-        "codigo": "Rep100",
-        "descripcion": "BALINERA 6004 PFI",
-        "marca": "Pfi",
-        "precio": "$3.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1L7MLgeYwlyTO2aoKZR_M7opi0JSIq_LW=w300"
-      },
-      {
-        "codigo": "Rep103",
-        "descripcion": "BALINERA 6005 PFI",
-        "marca": "Pfi",
-        "precio": "$3.700,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1-vge6eZOtUDbH70wIt9t8sfgT1xQBg1y=w300"
-      },
-      {
-        "codigo": "Rep109",
-        "descripcion": "BALINERA 6200 PFI",
-        "marca": "Pfi",
-        "precio": "$2.300,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1jpZCqOQbUM7KT5UYzK9eNmLY_L5kZSga=w300"
-      },
-      {
-        "codigo": "Rep004",
-        "descripcion": "BALINERA 6200 RS KOYO CAJA BLANCA",
-        "marca": "Koyo",
-        "precio": "$2.400,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1ipJIPR1uN27bz-Ztn4B7h4ylraq1xq79=w300"
-      },
-      {
-        "codigo": "REP1056",
-        "descripcion": "BALINERA 6201 PFI",
-        "marca": "Pfi",
-        "precio": "$2.300,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1PAhHArBikpMAa7ihBnanLBNmdY1GT3Z3=w300"
-      },
-      {
-        "codigo": "Rep005",
-        "descripcion": "BALINERA 6201 RS KOYO CAJA BLANCA",
-        "marca": "Koyo",
-        "precio": "$2.400,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1jQfr82CUX6PzSrXSpqYxSH0iDMuCNRZB=w300"
-      },
-      {
-        "codigo": "Rep074",
-        "descripcion": "BALINERA 6204 PFI",
-        "marca": "Pfi",
-        "precio": "$4.900,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1yqI5Gxe3QjZQSthxReIdYF5AE9-eI7r2=w300"
-      },
-      {
-        "codigo": "Rep008",
-        "descripcion": "BALINERA 6204 RS KOYO CAJA BLANCA",
-        "marca": "Koyo",
-        "precio": "$5.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1DWOr53-ws9i79yz2AcUf81PrN4jEzOIm=w300"
-      },
-      {
-        "codigo": "Rep009",
-        "descripcion": "BALINERA 6205 RS KOYO CAJA BLANCA",
-        "marca": "Koyo",
-        "precio": "$4.200,00",
-        "imagen": "https://lh3.googleusercontent.com/d/11HAHAIJ3BuKXNRfG2lwnhbzHC0Lz1Wiq=w300"
-      },
-      {
-        "codigo": "Rep101",
-        "descripcion": "BALINERA 6300 PFI",
-        "marca": "Pfi",
-        "precio": "$2.900,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1-rchS8qdCn9wPXIc3uSk3FeTpGT88QNp=w300"
-      },
-      {
-        "codigo": "Rep010",
-        "descripcion": "BALINERA 6300 RS KOYO CAJA BLANCA",
-        "marca": "Koyo",
-        "precio": "$3.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1NxqQZXEYicYUyt053APCIrpWSYNka9lT=w300"
-      },
-      {
-        "codigo": "Rep011",
-        "descripcion": "BALINERA 6301 RS KOYO CAJA BLANCO",
-        "marca": "Koyo",
-        "precio": "$3.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1xS3bXXmdZI1M95fK0k5rqInku6usrKCv=w300"
-      },
-      {
-        "codigo": "Rep012",
-        "descripcion": "BALINERA 6302 RS KOYO CAJA BLANCA",
-        "marca": "Koyo",
-        "precio": "$3.300,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1H_AktHyxeBlYOZxziVnMB71U0qdFTHsV=w300"
-      },
-      {
-        "codigo": "REP1063",
-        "descripcion": "BALINERA 6303 C3 KOYO CAJA BLANCA",
-        "marca": "Koyo",
-        "precio": "$7.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1OFqvfpwptRoh7KBAZM3VV2GbDQW6l-00=w300"
-      },
-      {
-        "codigo": "Rep097",
-        "descripcion": "BALINERA 6303 PFI",
-        "marca": "Pfi",
-        "precio": "$4.800,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1__uKsxwIDxc9vdw6n_DsgMZ52WmGj3mm=w300"
-      },
-      {
-        "codigo": "Rep907",
-        "descripcion": "BALINERA 6304 C3 KOYO CAJA BLANCA",
-        "marca": "Koyo",
-        "precio": "$8.300,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1SIwcNQ_UXHnOx928vTFOwjPBUkVP_wIM=w300"
-      },
-      {
-        "codigo": "Rep098",
-        "descripcion": "BALINERA 6304 C3 PFI",
-        "marca": "Pfi",
-        "precio": "$8.200,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1h1IuNPWlzYr7jG2a5SFnLVmQaWs5vdi7=w300"
-      },
-      {
         "codigo": "Rep554",
         "descripcion": "BALINERA CLUCTH BOXER 628 KCC",
         "marca": "Kcc",
@@ -1150,27 +1031,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1KoPb8EY--cQrKGFNDFck6mG8Gjstjj-r=w300"
       },
       {
-        "codigo": "REP1169",
-        "descripcion": "BUJIA IRIDIUM NGK CR7HIX BOXER CT 100",
-        "marca": "Ngk",
-        "precio": "$10.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/15IamJGZcWlKItWfSwyNr2qgeM2XHduGH=w300"
-      },
-      {
-        "codigo": "REP1171",
-        "descripcion": "BUJIA IRIDIUM NGK CR8EIX PULSAR-DISCOVER",
-        "marca": "Ngk",
-        "precio": "$10.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1b3avIntZHH7WeIhR-zhe1ILbAgjzfUwW=w300"
-      },
-      {
-        "codigo": "REP1170",
-        "descripcion": "BUJIA IRIDIUM NGK DR8EIX AKT-NKD",
-        "marca": "Ngk",
-        "precio": "$10.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1K1O0cvLv6IRlco8Gy9rMWQUW1ZjY9zQV=w300"
-      },
-      {
         "codigo": "Rep120",
         "descripcion": "BUJIA IRIDIUM THUNDER A7TIX BOXER CT 100",
         "marca": "Thunder",
@@ -1204,13 +1064,6 @@
         "marca": "Kcc",
         "precio": "$2.000,00",
         "imagen": "https://lh3.googleusercontent.com/d/1JaW95_PHFxdm_1SN6CpkeGM7G5J-Und8=w300"
-      },
-      {
-        "codigo": "Rep119",
-        "descripcion": "BUJIA ORIGINAL BRASIL NGK C7HSA-BOXER",
-        "marca": "Ngk",
-        "precio": "$3.800,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1UO7FzPTldYEn2P97XbqS9jaLFlg1Kait=w300"
       },
       {
         "codigo": "Rep112",
@@ -4156,14 +4009,14 @@
         "codigo": "PTR327",
         "descripcion": "KIT ARRASTRE ACERADO BOXER CT 44T+14T 428H-124L NORTH PANTHER",
         "marca": "Panther",
-        "precio": "$46.000,00",
+        "precio": "$39.000,00",
         "imagen": "https://lh3.googleusercontent.com/d/1gphBvMz3sfhY1AbTDSTjjdt9x9HiH3yQ=w300"
       },
       {
         "codigo": "PTR335",
         "descripcion": "KIT ARRASTRE ACERADO BOXER CT100 KS 42T+14T 428HX124L NORTH PANTHR",
         "marca": "North Panthr",
-        "precio": "$42.000,00",
+        "precio": "$38.000,00",
         "imagen": "https://lh3.googleusercontent.com/d/1bSy_14lAIAP_Gjf-MTrlYjvtFuK8f5Q6=w300"
       },
       {
@@ -4233,7 +4086,7 @@
         "codigo": "PTR330",
         "descripcion": "KIT ARRASTRE ACERADO GN125 43T+13T 428H-124L NORTH PANTHER",
         "marca": "Panther",
-        "precio": "$44.750,00",
+        "precio": "$40.000,00",
         "imagen": "https://lh3.googleusercontent.com/d/12dx8as7ii2WxxtRWNbvc14sBDNQ4IL1B=w300"
       },
       {
