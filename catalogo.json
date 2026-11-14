@@ -2637,7 +2637,7 @@
         "codigo": "PTR1341-G",
         "descripcion": "CUBIERTA STOP SZR150-160 NORTH PANTHR",
         "marca": "North Panthr",
-        "precio": "$16.000",
+        "precio": "$16.0",
         "imagen": "https://lh3.googleusercontent.com/d/1y4NBGWw6tXlULa1LR_RB_Z50jK3GlcJf=w300"
       },
       {
@@ -2968,13 +2968,6 @@
         "marca": "North Panthr",
         "precio": "$ 5.350,00",
         "imagen": "https://lh3.googleusercontent.com/d/1opRqhX13nbOwkOCLGnj6xQhG-VtCupe2=w300"
-      },
-      {
-        "codigo": "Rep984",
-        "descripcion": "DIRECCIONAL XR 150/CB 110 KCC",
-        "marca": "Kcc",
-        "precio": "$ 5.750,00",
-        "imagen": "https://lh3.googleusercontent.com/d/16TVfDbmP6tFzv_ok_ZExO-8rhGxljyaS=w300"
       },
       {
         "codigo": "PTR578",
@@ -5007,6 +5000,83 @@
         "imagen": "https://lh3.googleusercontent.com/d/1I4R14WBV6ufd83zFF-cNFzXlHxTkYX26=w300"
       },
       {
+        "codigo": "PTR1225",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT 110 14T-36T 428H 110",
+        "marca": "Otros",
+        "precio": "$ 29.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1223",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT 125 NKD 15T-38T 428H 124",
+        "marca": "Otros",
+        "precio": "$ 29.500,00",
+        "imagen": "https://lh3.googleusercontent.com/d/1k3Yw0plteJnMTe_T207rJyE3GQJOoTwp=w300"
+      },
+      {
+        "codigo": "PTR1226",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT 150 EVO NE 15T-41T 428H 124",
+        "marca": "Otros",
+        "precio": "$ 31.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1233",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT 180 XM 36T-13T 520H 110",
+        "marca": "Otros",
+        "precio": "$ 50.000,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1232",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT CR4 125 40T-14T 428H 118",
+        "marca": "Otros",
+        "precio": "$ 31.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1229",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT CR5 180/TTX 180 41T-13T 520H 112",
+        "marca": "Otros",
+        "precio": "$ 50.000,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1230",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT EVO R3 41T-14T 428H 124",
+        "marca": "Otros",
+        "precio": "$ 31.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1231",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT RTX 150 42T-14T 428H 126",
+        "marca": "Otros",
+        "precio": "$ 31.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1224",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT TTR 125-150 13T-42T 520H 112",
+        "marca": "Otros",
+        "precio": "$ 50.000,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1227",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT150 EVO 15T-38T 428H 124",
+        "marca": "Otros",
+        "precio": "$ 29.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1228",
+        "descripcion": "KIT DE ARRASTRE NEGRO AKT180T/TTR200 40T-13T 520H 112",
+        "marca": "Otros",
+        "precio": "$ 50.000,00",
+        "imagen": ""
+      },
+      {
         "codigo": "PTR1300",
         "descripcion": "KIT DE ARRASTRE NEGRO AX100 42T-14T 428H 118 NORTH PANTHR",
         "marca": "North Panthr",
@@ -5018,6 +5088,34 @@
         "descripcion": "KIT DE ARRASTRE NEGRO BEST FD-VIVAX 14T-35T 428H 122 NORTH PANTHR",
         "marca": "North Panthr",
         "precio": "$ 29.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1241",
+        "descripcion": "KIT DE ARRASTRE NEGRO BOXER CT 14T-42T 428H 120",
+        "marca": "Otros",
+        "precio": "$ 29.900,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1242",
+        "descripcion": "KIT DE ARRASTRE NEGRO BOXER CT 44T-13T 428H 120",
+        "marca": "Otros",
+        "precio": "$ 29.900,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1243",
+        "descripcion": "KIT DE ARRASTRE NEGRO BOXER CT 44T-14T 428H 120",
+        "marca": "Otros",
+        "precio": "$ 29.900,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1244",
+        "descripcion": "KIT DE ARRASTRE NEGRO BOXER CT 47T-14T 428H 124",
+        "marca": "Otros",
+        "precio": "$ 33.000,00",
         "imagen": ""
       },
       {
@@ -5077,6 +5175,27 @@
         "imagen": ""
       },
       {
+        "codigo": "PTR1246",
+        "descripcion": "KIT DE ARRASTRE NEGRO DISCOVER 100M 42T-14T 428H 124",
+        "marca": "Otros",
+        "precio": "$ 29.900,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1235",
+        "descripcion": "KIT DE ARRASTRE NEGRO DISCOVER 125-150 ST 14T-45T 428H 132",
+        "marca": "Otros",
+        "precio": "$ 31.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1239",
+        "descripcion": "KIT DE ARRASTRE NEGRO DOMINAR 400 45T-15T 520H 120",
+        "marca": "Otros",
+        "precio": "$ 52.000,00",
+        "imagen": ""
+      },
+      {
         "codigo": "PTR1272",
         "descripcion": "KIT DE ARRASTRE NEGRO DR 150 6H 50T-15T 428H 132 NORTH PANTHR",
         "marca": "North Panthr",
@@ -5123,6 +5242,13 @@
         "descripcion": "KIT DE ARRASTRE NEGRO ECO DELUXE NXG 14T-43T 428H 120 NORTH PANTHR",
         "marca": "North Panthr",
         "precio": "$ 29.900,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1234",
+        "descripcion": "KIT DE ARRASTRE NEGRO FLEX 125 14T-34T 428H 120",
+        "marca": "Otros",
+        "precio": "$ 29.500,00",
         "imagen": ""
       },
       {
@@ -5224,6 +5350,13 @@
         "imagen": ""
       },
       {
+        "codigo": "PTR1238",
+        "descripcion": "KIT DE ARRASTRE NEGRO MRX 125 41T-13T 520H 112",
+        "marca": "Otros",
+        "precio": "$ 51.000,00",
+        "imagen": ""
+      },
+      {
         "codigo": "PTR1299",
         "descripcion": "KIT DE ARRASTRE NEGRO MRX 150 CONCAVO 50T-15T 428H 132 NORTH PANTHR",
         "marca": "North Panthr",
@@ -5242,6 +5375,27 @@
         "descripcion": "KIT DE ARRASTRE NEGRO PULSAR 135 43T-14T 428H 132 NORTH PANTHR",
         "marca": "North Panthr",
         "precio": "$ 32.000,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1237",
+        "descripcion": "KIT DE ARRASTRE NEGRO PULSAR 160 MN 14T-45T 428H 138",
+        "marca": "Otros",
+        "precio": "$ 31.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1240",
+        "descripcion": "KIT DE ARRASTRE NEGRO PULSAR 160NS 45T-15T 428H 138",
+        "marca": "Otros",
+        "precio": "$ 31.500,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1236",
+        "descripcion": "KIT DE ARRASTRE NEGRO PULSAR 200 NS 6H 14T-39T 520H 112",
+        "marca": "Otros",
+        "precio": "$ 50.000,00",
         "imagen": ""
       },
       {
@@ -5319,6 +5473,13 @@
         "descripcion": "KIT DE ARRASTRE NEGRO V STROM DL 650 47T-14T 525H 120 NORTH PANTHR",
         "marca": "North Panthr",
         "precio": "$ 70.000,00",
+        "imagen": ""
+      },
+      {
+        "codigo": "PTR1247",
+        "descripcion": "KIT DE ARRASTRE NEGRO WAVE 110 S 38T-14T 428H 120",
+        "marca": "Otros",
+        "precio": "$ 29.500,00",
         "imagen": ""
       },
       {
@@ -8878,13 +9039,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1zoVmxDBek-3hYoGhskeGJEP_2QZduL9B=w300"
       },
       {
-        "codigo": "PTR937-G",
-        "descripcion": "REPOSAPIE CB110 DELANTEROS NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$ 6.250,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1zOxK_cEz4PyDCrKlINZjbl31S12rw6Zr=w300"
-      },
-      {
         "codigo": "PTR1417-G",
         "descripcion": "REPOSAPIE CRYPTON 115 FI DELANTEROS NORTH PANTHR",
         "marca": "North Panthr",
@@ -9137,20 +9291,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/10QVQIJ2XEgTQuYplQVzK7_mxr5M7k-nK=w300"
       },
       {
-        "codigo": "PTR848",
-        "descripcion": "RIN DE HIERRO 160X17 BOXER CT100 (COMPLETO DELANTERO) NORTH PA NTHER",
-        "marca": "Otros",
-        "precio": "$ 129.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1p0hUKwdGccCqXV2JxHftN2GhvYeWQGqO=w300"
-      },
-      {
-        "codigo": "PTR1222",
-        "descripcion": "RIN DE HIERRO 185X17 BOXER CT100 (COMPLETO TRASERO) NORTH PANT HER",
-        "marca": "Otros",
-        "precio": "$ 135.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1bhGkVo-ezV_kbnGyx3zp1020zhlaJAQe=w300"
-      },
-      {
         "codigo": "Rep214",
         "descripcion": "RIN DE HIERRO 140X17 KCC",
         "marca": "Kcc",
@@ -9186,6 +9326,13 @@
         "imagen": "https://lh3.googleusercontent.com/d/1E6A65CLJZO4FCJalfu852sDnFoFMxeAI=w300"
       },
       {
+        "codigo": "PTR848",
+        "descripcion": "RIN DE HIERRO 160X17 BOXER CT100 (COMPLETO DELANTERO) NORTH PA NTHER",
+        "marca": "Otros",
+        "precio": "$ 129.000,00",
+        "imagen": "https://lh3.googleusercontent.com/d/1p0hUKwdGccCqXV2JxHftN2GhvYeWQGqO=w300"
+      },
+      {
         "codigo": "PTR077",
         "descripcion": "RIN DE HIERRO 160X17 NORTH PANTHER",
         "marca": "Panther",
@@ -9219,6 +9366,13 @@
         "marca": "Panther",
         "precio": "$ 58.250,00",
         "imagen": "https://lh3.googleusercontent.com/d/1-O1RD5y9FVgyYJH2RiDMPLgt6L54gJOz=w300"
+      },
+      {
+        "codigo": "PTR1222",
+        "descripcion": "RIN DE HIERRO 185X17 BOXER CT100 (COMPLETO TRASERO) NORTH PANT HER",
+        "marca": "Otros",
+        "precio": "$ 135.000,00",
+        "imagen": "https://lh3.googleusercontent.com/d/1bhGkVo-ezV_kbnGyx3zp1020zhlaJAQe=w300"
       },
       {
         "codigo": "Rep525",
