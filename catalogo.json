@@ -2732,25 +2732,11 @@
         "imagen": "https://lh3.googleusercontent.com/d/1z8X3r3Qp09sZrdmRpf2l5qCx8mXUA6v8=w300"
       },
       {
-        "codigo": "PTR750",
-        "descripcion": "DESLIZADOR DE CADENA MRX 125/150 NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$ 8.350,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1CXWpy7N-pPz6sfvC_jgzfHphSh6gkUrA=w300"
-      },
-      {
         "codigo": "PTR751",
         "descripcion": "DESLIZADOR DE CADENA TTR125/150/180/200 NORTH PANTHR",
         "marca": "North Panthr",
         "precio": "$ 9.400,00",
         "imagen": "https://lh3.googleusercontent.com/d/1Kgu7IsE-LTDky5vDAPnNXzZ0h_RXthHY=w300"
-      },
-      {
-        "codigo": "PTR749",
-        "descripcion": "DESLIZADOR DE CADENA XR 150 NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$ 8.350,00",
-        "imagen": "https://lh3.googleusercontent.com/d/13hkCpUO40roVIclDW52vAKi6ASuzm2x5=w300"
       },
       {
         "codigo": "Rep302",
@@ -7121,20 +7107,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1xFwOXiclurFeM9KJhsoujRRHsq_GMrjB=w300"
       },
       {
-        "codigo": "PTR785",
-        "descripcion": "MANIGUETA XR 150L CON SOPORTE NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$ 11.450,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1O0B93ub0lqrQwIT_4UhySHQot4SNr2xm=w300"
-      },
-      {
-        "codigo": "PTR1221-G",
-        "descripcion": "MANIGUETA XTZ 125 IZQUIERDA NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$ 6.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1kIc8reMRuRZilIzOjed1Cmm1qjd5t-1W=w300"
-      },
-      {
         "codigo": "PTR1186-G",
         "descripcion": "MANILARES GN 125 NORTH PANTHR",
         "marca": "North Panthr",
@@ -9984,13 +9956,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1oeeQUyxzkEjZYd16MLeZ2_UkPxA1TiGk=w300"
       },
       {
-        "codigo": "PTR175",
-        "descripcion": "SOQUETE TRISETA UNIVERSAL NORTH PANTHR",
-        "marca": "North Panthr",
-        "precio": "$ 1.700,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1v9M5YqMqFq5jBKyE9tDmlFhyPj9soLxh=w300"
-      },
-      {
         "codigo": "Rep104",
         "descripcion": "STOP AKT NKD 125 (LED) MOTOLED",
         "marca": "Motoled",
@@ -11807,13 +11772,6 @@
       }
     ],
     "Harkes": [
-      {
-        "codigo": "DM-1011-15",
-        "descripcion": "ARANDELA PIÑON SALIDA BOXER CT 100 (PAQ X 10 UND) HARKES",
-        "marca": "Harkes",
-        "precio": "$4.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1xf75aGWUA50Vj-0jqsGdBGVD-G0TqgwL=w300"
-      },
       {
         "codigo": "DG-1014-98",
         "descripcion": "ARANDELA TAPON DE ACEITE PULSAR 180 UG BOXER CT (PAQ X 20 UND ) HARKES",
