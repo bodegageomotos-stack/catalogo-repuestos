@@ -6673,6 +6673,13 @@
         "imagen": "https://lh3.googleusercontent.com/d/1HK0a64k82gLZXHrAToWsv_d_ejw-P65H=w300"
       },
       {
+        "codigo": "GEO041",
+        "descripcion": "LLANTA PANTHER 450-12 TL TIPO ORIGINAL",
+        "marca": "Panther",
+        "precio": "$ 94.000,00",
+        "imagen": "https://lh3.googleusercontent.com/d/1HK0a64k82gLZXHrAToWsv_d_ejw-P65H=w300"
+      },
+      {
         "codigo": "GEO113",
         "descripcion": "LLANTA PANTHER 450-12 TL RODMAX",
         "marca": "Panther",
@@ -6783,6 +6790,13 @@
         "marca": "Panther",
         "precio": "$ 74.000,00",
         "imagen": "https://lh3.googleusercontent.com/d/1uWZnILd2PmsHvZ7GUMgdpMBkJVR65yD-=w300"
+      },
+      {
+        "codigo": "GEO332",
+        "descripcion": "LLANTA PANTHER 90/90-19 TL TIPO PIRELLI MT60",
+        "marca": "Panther",
+        "precio": "$ 94.800,00",
+        "imagen": ""
       },
       {
         "codigo": "GEO035",
@@ -7513,6 +7527,20 @@
         "imagen": "https://lh3.googleusercontent.com/d/1O3KwAG97cNj8pJhg0u_Dn39F8WcecuIT=w300"
       },
       {
+        "codigo": "Rep440",
+        "descripcion": "NEUMATICO PANTHER 300-17",
+        "marca": "Panther",
+        "precio": "$ 9.000,00",
+        "imagen": "https://lh3.googleusercontent.com/d/1lTdnIvzBmvDfLmiCjXnU7_5IbJOyII6q=w300"
+      },
+      {
+        "codigo": "Rep441",
+        "descripcion": "NEUMATICO PANTHER 300-18",
+        "marca": "Panther",
+        "precio": "$ 9.100,00",
+        "imagen": "https://lh3.googleusercontent.com/d/1lTdnIvzBmvDfLmiCjXnU7_5IbJOyII6q=w300"
+      },
+      {
         "codigo": "Rep437",
         "descripcion": "NEUMATICO PANTHER 300-19",
         "marca": "Panther",
@@ -7546,6 +7574,13 @@
         "marca": "Panther",
         "precio": "$ 11.600,00",
         "imagen": "https://lh3.googleusercontent.com/d/1nMJoG23AhqJajfnHz8azVLkMCUbOsHEj=w300"
+      },
+      {
+        "codigo": "Rep436",
+        "descripcion": "NEUMATICO PANTHER 410-17",
+        "marca": "Panther",
+        "precio": "$ 11.500,00",
+        "imagen": "https://lh3.googleusercontent.com/d/1G-H2S1gLKcTA3Lj3e6eYCN1SdgOyb4zU=w300"
       },
       {
         "codigo": "Rep434",
