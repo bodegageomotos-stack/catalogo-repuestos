@@ -7989,13 +7989,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/13PrP5nD2W5pBJjNeGPv7Obvs5FI2i78t=w300"
       },
       {
-        "codigo": "PTR028",
-        "descripcion": "PIÑON ACERADO AKT NKD SL 15T DEL.NORTH PANTHER",
-        "marca": "Panther",
-        "precio": "$ 4.500,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1gebNWyHdSsvSilkdgdAUEiozfEgsoNuR=w300"
-      },
-      {
         "codigo": "PTR026",
         "descripcion": "PIÑON ACERADO BOXER CT 100 13T DEL.NORTH PANTHER",
         "marca": "Panther",
@@ -9359,13 +9352,6 @@
         "marca": "Panther",
         "precio": "$ 58.250,00",
         "imagen": "https://lh3.googleusercontent.com/d/1-O1RD5y9FVgyYJH2RiDMPLgt6L54gJOz=w300"
-      },
-      {
-        "codigo": "PTR1222",
-        "descripcion": "RIN DE HIERRO 185X17 BOXER CT100 (COMPLETO TRASERO) NORTH PANT HER",
-        "marca": "Otros",
-        "precio": "$ 135.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1bhGkVo-ezV_kbnGyx3zp1020zhlaJAQe=w300"
       },
       {
         "codigo": "Rep525",
@@ -11135,7 +11121,7 @@
       },
       {
         "codigo": "JD521002",
-        "descripcion": "EMPAQUE CILINDRO PULSAR 135-BOXER BM 150(PAQ X20 UND) ORIGINAL BAJAJ",
+        "descripcion": "EMPAQUE CILINDRO PULSAR 135-BOXER BM 150 (PAQ X20 UND) ORIGINAL BAJAJ",
         "marca": "Bajaj",
         "precio": "$50,000.000",
         "imagen": "https://lh3.googleusercontent.com/d/1byHZmFjQiRmAyq2xdHp-RWPcT1aJiWKv=w300"
@@ -11170,28 +11156,28 @@
       },
       {
         "codigo": "DM101140",
-        "descripcion": "EMPAQUE TAPA CLUTCH BOXER CT ORIGINAL BAJAJ",
+        "descripcion": "EMPAQUE TAPA CLUTCH BOXER CT (PAQ X10 UND)ORIGINAL BAJAJ",
         "marca": "Bajaj",
         "precio": "$6.000,00",
         "imagen": "https://lh3.googleusercontent.com/d/1Tl5BW6W08IMUi97wCQokJ_ozj-Tg8Ucm=w300"
       },
       {
         "codigo": "JA541212",
-        "descripcion": "EMPAQUE TAPA CLUTCH PULSAR 135 DISCOVER 125+ ORIGINAL BAJAJ",
+        "descripcion": "EMPAQUE TAPA CLUTCH PULSAR 135 DISCOVER 125+ (PAQ X10 UND)ORIGINAL BAJAJ",
         "marca": "Bajaj",
         "precio": "$5.550,00",
         "imagen": "https://lh3.googleusercontent.com/d/1PhmFuP4IRjyjIS5zf3KpAHNxb5qAFNsz=w300"
       },
       {
         "codigo": "DM101139",
-        "descripcion": "EMPAQUE TAPA VOLANTE BOXER CT ORIGINAL BAJAJ",
+        "descripcion": "EMPAQUE TAPA VOLANTE BOXER CT (PAQ X10 UND) ORIGINAL BAJAJ",
         "marca": "Bajaj",
         "precio": "$3.800,00",
         "imagen": "https://lh3.googleusercontent.com/d/1c_12IVWDRa8Oz-GBs1rq8Qa8oVxNsfSe=w300"
       },
       {
         "codigo": "DV101042",
-        "descripcion": "EMPAQUE TAPA VOLANTE PULSAR 180-220 ORIGINAL BAJAJ",
+        "descripcion": "EMPAQUE TAPA VOLANTE PULSAR 180-220 (PAQ X10 UND) ORIGINAL BAJAJ",
         "marca": "Bajaj",
         "precio": "$4.400,00",
         "imagen": "https://lh3.googleusercontent.com/d/1hpx4aVSInhGH2xGwh1kX3dzDVOZct1y0=w300"
