@@ -1574,7 +1574,7 @@
         "descripcion": "CABLE DE VELOCIMETRO CRYPTON T115 FI NORTH PANTHR",
         "marca": "North Panthr",
         "precio": "$ 5.500,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1xXxWrdNGUdgw-AdO7-DXpzZHQbrStDeg=w300"
+        "imagen": ""
       },
       {
         "codigo": "Rep136",
@@ -7157,7 +7157,7 @@
       },
       {
         "codigo": "PTR1123-G",
-        "descripcion": "MICRO SWITCH STOP AKT NKD NORTH PANTHR",
+        "descripcion": "SWITCH STOP AKT NKD (PAQ X5 )NORTH PANTHR",
         "marca": "North Panthr",
         "precio": "$ 1.400,00",
         "imagen": "https://lh3.googleusercontent.com/d/1cvXYrONKGyf-gqD9QkG9BG-6wPq04O_B=w300"
@@ -7569,13 +7569,6 @@
         "imagen": "https://lh3.googleusercontent.com/d/1nMJoG23AhqJajfnHz8azVLkMCUbOsHEj=w300"
       },
       {
-        "codigo": "Rep436",
-        "descripcion": "NEUMATICO PANTHER 410-17",
-        "marca": "Panther",
-        "precio": "$ 11.500,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1vFVYbo8q6fo8t-NZjvC4mjlflcX7LSTC=w300"
-      },
-      {
         "codigo": "Rep434",
         "descripcion": "NEUMATICO PANTHER 410-18",
         "marca": "Panther",
@@ -7644,13 +7637,6 @@
         "marca": "North Panthr",
         "precio": "$ 3.900,00",
         "imagen": "https://lh3.googleusercontent.com/d/12VOj7464w85mjQ03UYFWOtczhQrGPQMh=w300"
-      },
-      {
-        "codigo": "Rep779",
-        "descripcion": "PASTILLAS DE FRENO LIBERO 125-NMAX 155 TRA TIPO ORIGINAL KCC",
-        "marca": "Kcc",
-        "precio": "$ 5.200,00",
-        "imagen": "https://lh3.googleusercontent.com/d/1SdD3nuwUUgwnVas2vYWm9cnKniIW5QlJ=w300"
       },
       {
         "codigo": "PTR109",
@@ -9247,13 +9233,6 @@
         "marca": "North Panthr",
         "precio": "$ 150.000,00",
         "imagen": "https://lh3.googleusercontent.com/d/1-lOzUgRF8jiB00DF8hgmbePWmMnejlz_=w300"
-      },
-      {
-        "codigo": "Rep042",
-        "descripcion": "RIN DE ASPA GN 125 TRASERO KCC",
-        "marca": "Kcc",
-        "precio": "$ 156.000,00",
-        "imagen": "https://lh3.googleusercontent.com/d/19U2HX5l7XKCZP_HjBI73PjK8YlMxyA_D=w300"
       },
       {
         "codigo": "PTR1170-G",
